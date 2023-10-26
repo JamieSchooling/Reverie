@@ -231,7 +231,7 @@ MonoBehaviour:
   _jumpForce: 25
   _gravity: 100
   _maxFallSpeed: 40
-  _groundCheckDistance: 0.05
+  _collisionCheckDistance: 0.29
   _groundCheck: {fileID: 1878146612}
   _ceilingCheck: {fileID: 370560710}
 --- !u!50 &297262454
@@ -320,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 370560709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -830,7 +830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878146611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
