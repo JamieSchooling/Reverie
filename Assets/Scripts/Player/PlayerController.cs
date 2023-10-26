@@ -74,4 +74,19 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody.velocity = _velocity;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (_groundCheck != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(_groundCheck.position, _collisionCheckDistance);
+        }
+
+        if (_ceilingCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(_ceilingCheck.position, _collisionCheckDistance);
+        }
+    }
 }
