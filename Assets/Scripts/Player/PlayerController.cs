@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _jumpForce = 25f;
     [SerializeField] private float _gravity = 100f;
     [SerializeField] private float _maxFallSpeed = 40f;
-    [SerializeField] private float _groundCheckDistance = 0.05f;
+    [SerializeField] private float _collisionCheckDistance = 0.05f;
+    [SerializeField] private Transform _groundCheck;
+    [SerializeField] private Transform _ceilingCheck;
 
     private Rigidbody2D _rigidbody;
     private CapsuleCollider2D _collider;
@@ -27,17 +29,22 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckGrounded();
+        CheckCollisions();
         Gravity();
 
         ApplyMovement();
     }
 
-    private void CheckGrounded()
+    private void CheckCollisions()
     {
-        bool hitGroundThisFrame = Physics2D.CapsuleCast(
-                    _collider.bounds.center, _collider.size, _collider.direction, 0,
-                    Vector2.down, _groundCheckDistance, ~_playerLayer);
+        bool hitGroundThisFrame = Physics2D.OverlapCircle(_groundCheck.position, _collisionCheckDistance, ~_playerLayer);
+        bool hitCeilingThisFrame = Physics2D.OverlapCircle(_ceilingCheck.position, _collisionCheckDistance, ~_playerLayer);
+
+
+        if (hitCeilingThisFrame)
+        {
+            _velocity.y = Mathf.Min(0, _velocity.y);
+        }
 
         if (!_isGrounded && hitGroundThisFrame)
             _isGrounded = true;
