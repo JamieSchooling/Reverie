@@ -47,9 +47,20 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!_isGrounded && hitGroundThisFrame)
+        {
             _isGrounded = true;
+            RaycastHit2D hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.size.y * 0.5f, ~_playerLayer);
+            if (hit.collider != null)
+            {
+                float distanceSunkInGround = hit.collider.bounds.max.y - _collider.bounds.min.y;
+                Vector2 newPosition = new(_rigidbody.position.x, _rigidbody.position.y + distanceSunkInGround);
+                _rigidbody.position = newPosition;
+            }
+        }
         else if (_isGrounded && !hitGroundThisFrame)
+        {
             _isGrounded = false;
+        }
     }
 
     private void Gravity()
