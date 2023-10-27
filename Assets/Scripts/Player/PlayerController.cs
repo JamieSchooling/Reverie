@@ -6,12 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private LayerMask _playerLayer;
+    [Header("Vertical")]
     [SerializeField] private float _jumpForce = 25f;
     [SerializeField] private float _gravity = 100f;
     [SerializeField] private float _maxFallSpeed = 40f;
     [SerializeField] private float _collisionCheckDistance = 0.05f;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private Transform _ceilingCheck;
+    [Header("Horizontal")]
+    [SerializeField] private float _maxSpeed = 15;
+    [SerializeField] private float _acceleration = 100;
+    [SerializeField] private float _deceleration = 50;
 
     private Rigidbody2D _rigidbody;
     private CapsuleCollider2D _collider;
@@ -19,18 +24,23 @@ public class PlayerController : MonoBehaviour
     private Vector2 _velocity = Vector2.zero;
     private bool _isGrounded = false;
 
+    private float _movementInputVector;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<CapsuleCollider2D>();
 
         _inputReader.OnJumpPressed += JumpPressed;
+        _inputReader.OnMoveInput += (inputVector) => _movementInputVector = inputVector;
     }
 
     private void FixedUpdate()
     {
         CheckCollisions();
         Gravity();
+
+        CalculateHorizontalMovement();
 
         ApplyMovement();
     }
@@ -79,6 +89,18 @@ public class PlayerController : MonoBehaviour
     {
         if (_isGrounded)
             _velocity.y = _jumpForce;
+    }
+
+    private void CalculateHorizontalMovement()
+    {
+        if (_movementInputVector == 0)
+        {
+            _velocity.x = Mathf.MoveTowards(_velocity.x, 0, _deceleration * Time.fixedDeltaTime);
+        }
+        else
+        {
+            _velocity.x = Mathf.MoveTowards(_velocity.x, _movementInputVector * _maxSpeed, _acceleration * Time.fixedDeltaTime);
+        }
     }
 
     private void ApplyMovement()
