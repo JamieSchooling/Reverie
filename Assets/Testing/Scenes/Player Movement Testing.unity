@@ -231,6 +231,8 @@ MonoBehaviour:
   _maxSpeed: 0.2
   _acceleration: 5
   _deceleration: 2
+  _coyoteTime: 0.5
+  _jumpBuffer: 0.2
 --- !u!70 &297262455
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

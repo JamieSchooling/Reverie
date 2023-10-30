@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _acceleration = 100;
     [SerializeField] private float _deceleration = 50;
     [SerializeField] private float _coyoteTime = 0.5f;
+    [SerializeField] private float _jumpBuffer = 0.2f;
 
     private CapsuleCollider2D _collider;
     private Vector2 _velocity = Vector2.zero;
@@ -22,8 +23,11 @@ public class PlayerController : MonoBehaviour
     private float _time;
     private float _timeLeftGrounded;
     private bool _isCoyoteAvailable = false;
+    private float _timeJumpPressed;
+    private bool _isJumpBufferAvailable = false;
 
     private bool CanUseCoyote => _isCoyoteAvailable && !_isGrounded && _time < _timeLeftGrounded + _coyoteTime;
+    private bool HasBufferedJump => _isJumpBufferAvailable && _time < _timeJumpPressed + _jumpBuffer;
 
     private void Awake()
     {
@@ -58,17 +62,29 @@ public class PlayerController : MonoBehaviour
                 Vector2 newPosition = new(transform.position.x, transform.position.y + Mathf.Sign(_velocity.y));
                 transform.position = newPosition;
             }
+
+            bool doBufferedJump = false;
             if (!_isGrounded && _velocity.y < 0f)
             {
                 _isGrounded = true;
                 _isCoyoteAvailable = true;
-                _timeLeftGrounded = _time;
+
+                if (HasBufferedJump)
+                    doBufferedJump = true;
+
+                _isJumpBufferAvailable = false;
             }
             _velocity.y = 0f;
+
+            if (doBufferedJump)
+            {
+                ExecuteJump();
+            }
         }
         else if (_isGrounded)
         {
             _isGrounded = false;
+            _timeLeftGrounded = _time;
         }
 
         if (Physics2D.OverlapCapsule(new Vector2(transform.position.x + _velocity.x, transform.position.y), _collider.bounds.size, _collider.direction, 0f, ~_playerLayer))
@@ -91,9 +107,16 @@ public class PlayerController : MonoBehaviour
     {
         if (_isGrounded || CanUseCoyote)
         {
-            _velocity.y = _jumpForce;
-            _isCoyoteAvailable = false;
+            _timeJumpPressed = _time;
+            ExecuteJump();
         }
+    }
+
+    private void ExecuteJump()
+    {
+        _velocity.y = _jumpForce;
+        _isCoyoteAvailable = false;
+        _isJumpBufferAvailable = true;
     }
     
     private void JumpReleased()
