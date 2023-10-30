@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     private float _movementInputVector;
 
+    private bool _isGrounded = false;
+
     private void Awake()
     {
         _collider = GetComponent<CapsuleCollider2D>();
@@ -48,7 +50,15 @@ public class PlayerController : MonoBehaviour
                 Vector2 newPosition = new(transform.position.x, transform.position.y + Mathf.Sign(_velocity.y));
                 transform.position = newPosition;
             }
+            if (!_isGrounded && _velocity.y < 0f)
+            {
+                _isGrounded = true;
+            }
             _velocity.y = 0f;
+        }
+        else if (_isGrounded)
+        {
+            _isGrounded = false;
         }
 
         if (Physics2D.OverlapCapsule(new Vector2(transform.position.x + _velocity.x, transform.position.y), _collider.bounds.size, _collider.direction, 0f, ~_playerLayer))
@@ -62,15 +72,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
-    {
-        if (Physics2D.OverlapCapsule(new Vector2(transform.position.x, transform.position.y - 0.4f), _collider.bounds.size, _collider.direction, 0f, ~_playerLayer))
-        {
-            return true;
-        }
-        return false;
-    }
-
     private void Gravity()
     {
         _velocity.y = Mathf.MoveTowards(_velocity.y, -_maxFallSpeed, _gravity * Time.fixedDeltaTime);
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPressed()
     {
-        if (IsGrounded())
+        if (_isGrounded)
             _velocity.y = _jumpForce;
     }
     
