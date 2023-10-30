@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
         _collider = GetComponent<CapsuleCollider2D>();
 
         _inputReader.OnJumpPressed += JumpPressed;
+        _inputReader.OnJumpReleased += JumpReleased;
         _inputReader.OnMoveInput += (inputVector) => _movementInputVector = inputVector;
     }
 
@@ -79,6 +80,12 @@ public class PlayerController : MonoBehaviour
     {
         if (IsGrounded())
             _velocity.y = _jumpForce;
+    }
+    
+    private void JumpReleased()
+    {
+        if (_velocity.y > 0)
+            _velocity.y = 0f;
     }
 
     private void CalculateHorizontalMovement()
