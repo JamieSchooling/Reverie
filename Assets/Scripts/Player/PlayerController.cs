@@ -13,14 +13,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxSpeed = 15;
     [SerializeField] private float _acceleration = 100;
     [SerializeField] private float _deceleration = 50;
+    [SerializeField] private float _coyoteTime = 0.5f;
 
     private CapsuleCollider2D _collider;
-
     private Vector2 _velocity = Vector2.zero;
-
     private float _movementInputVector;
-
     private bool _isGrounded = false;
+    private float _time;
+    private float _timeLeftGrounded;
+    private bool _isCoyoteAvailable = false;
+
+    private bool CanUseCoyote => _isCoyoteAvailable && !_isGrounded && _time < _timeLeftGrounded + _coyoteTime;
 
     private void Awake()
     {
@@ -29,6 +32,11 @@ public class PlayerController : MonoBehaviour
         _inputReader.OnJumpPressed += JumpPressed;
         _inputReader.OnJumpReleased += JumpReleased;
         _inputReader.OnMoveInput += (inputVector) => _movementInputVector = inputVector;
+    }
+
+    private void Update()
+    {
+        _time += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -53,6 +61,8 @@ public class PlayerController : MonoBehaviour
             if (!_isGrounded && _velocity.y < 0f)
             {
                 _isGrounded = true;
+                _isCoyoteAvailable = true;
+                _timeLeftGrounded = _time;
             }
             _velocity.y = 0f;
         }
@@ -79,8 +89,11 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPressed()
     {
-        if (_isGrounded)
+        if (_isGrounded || CanUseCoyote)
+        {
             _velocity.y = _jumpForce;
+            _isCoyoteAvailable = false;
+        }
     }
     
     private void JumpReleased()
