@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
-    [SerializeField] private LayerMask _playerLayer;
+    [SerializeField] private LayerMask _ignoreCollsionsLayers;
     [Header("Gravity")]
     [SerializeField] private float _gravity = 100f;
     [SerializeField] private float _maxFallSpeed = 40f;
@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _coyoteTime = 0.5f;
     [SerializeField] private float _jumpBuffer = 0.2f;
 
-    private CapsuleCollider2D _collider;
+    private CircleCollider2D _collider;
     private Vector2 _velocity = Vector2.zero;
     private float _movementInputVector;
     private bool _isGrounded = false;
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _collider = GetComponent<CapsuleCollider2D>();
+        _collider = GetComponent<CircleCollider2D>();
 
         _inputReader.OnJumpPressed += JumpPressed;
         _inputReader.OnJumpReleased += JumpReleased;
@@ -55,9 +55,9 @@ public class PlayerController : MonoBehaviour
     
     private void CheckCollisions()
     {
-        if (Physics2D.OverlapCapsule(new Vector2(transform.position.x, transform.position.y + _velocity.y), _collider.bounds.size, _collider.direction, 0f, ~_playerLayer))
+        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + _velocity.y), _collider.radius, ~_ignoreCollsionsLayers))
         {
-            while (!Physics2D.OverlapCapsule(new Vector2(transform.position.x, transform.position.y + Mathf.Sign(_velocity.y)), _collider.bounds.size, _collider.direction, 0f, ~_playerLayer))
+            while (!Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + Mathf.Sign(_velocity.y)), _collider.radius, ~_ignoreCollsionsLayers))
             {
                 Vector2 newPosition = new(transform.position.x, transform.position.y + Mathf.Sign(_velocity.y));
                 transform.position = newPosition;
@@ -87,9 +87,9 @@ public class PlayerController : MonoBehaviour
             _timeLeftGrounded = _time;
         }
 
-        if (Physics2D.OverlapCapsule(new Vector2(transform.position.x + _velocity.x, transform.position.y), _collider.bounds.size, _collider.direction, 0f, ~_playerLayer))
+        if (Physics2D.OverlapCircle(new Vector2(transform.position.x + _velocity.x, transform.position.y), _collider.radius, ~_ignoreCollsionsLayers))
         {
-            while (!Physics2D.OverlapCapsule(new Vector2(transform.position.x + Mathf.Sign(_velocity.x), transform.position.y), _collider.bounds.size, _collider.direction, 0f, ~_playerLayer))
+            while (!Physics2D.OverlapCircle(new Vector2(transform.position.x + Mathf.Sign(_velocity.x), transform.position.y), _collider.radius, ~_ignoreCollsionsLayers))
             {
                 Vector2 newPosition = new(transform.position.x + Mathf.Sign(_velocity.x), transform.position.y);
                 transform.position = newPosition;
