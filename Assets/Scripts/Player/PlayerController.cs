@@ -24,10 +24,18 @@ public class PlayerController : MonoBehaviour
     private float _timeLeftGrounded;
     private bool _isCoyoteAvailable = false;
     private float _timeJumpPressed;
+    private float _timeJumpReleased;
     private bool _isJumpBufferAvailable = false;
 
-    private bool CanUseCoyote => _isCoyoteAvailable && !_isGrounded && _time < _timeLeftGrounded + _coyoteTime;
-    private bool HasBufferedJump => _isJumpBufferAvailable && _time < _timeJumpPressed + _jumpBuffer;
+    private bool CanUseCoyote =>
+        _isCoyoteAvailable
+        && !_isGrounded
+        && _time < _timeLeftGrounded + _coyoteTime;
+    private bool HasBufferedJump =>
+        _isJumpBufferAvailable
+        && _time < _timeJumpPressed + _jumpBuffer
+        && _time - _timeJumpReleased > _jumpBuffer
+        && _time > _timeJumpPressed + 0.1f;
 
     private void Awake()
     {
@@ -52,16 +60,16 @@ public class PlayerController : MonoBehaviour
 
         ApplyFinalMovement();
     }
-    
+
     private void CheckCollisions()
     {
-        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + _velocity.y), _collider.radius, ~_ignoreCollsionsLayers))
+        Collider2D hitY = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + _velocity.y), _collider.radius, ~_ignoreCollsionsLayers);
+        if (hitY)
         {
-            while (!Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + Mathf.Sign(_velocity.y)), _collider.radius, ~_ignoreCollsionsLayers))
-            {
-                Vector2 newPosition = new(transform.position.x, transform.position.y + Mathf.Sign(_velocity.y));
-                transform.position = newPosition;
-            }
+            Vector2 closestPoint = hitY.ClosestPoint(transform.position);
+            float sign = Mathf.Sign(_velocity.y);
+            Vector2 newPosition = new(transform.position.x, closestPoint.y + (_collider.radius * -sign) + (0.01f * -sign));
+            transform.position = newPosition;
 
             bool doBufferedJump = false;
             if (!_isGrounded && _velocity.y < 0f)
@@ -87,13 +95,13 @@ public class PlayerController : MonoBehaviour
             _timeLeftGrounded = _time;
         }
 
-        if (Physics2D.OverlapCircle(new Vector2(transform.position.x + _velocity.x, transform.position.y), _collider.radius, ~_ignoreCollsionsLayers))
+        Collider2D hitX = Physics2D.OverlapCircle(new Vector2(transform.position.x + _velocity.x, transform.position.y), _collider.radius, ~_ignoreCollsionsLayers);
+        if (hitX)
         {
-            while (!Physics2D.OverlapCircle(new Vector2(transform.position.x + Mathf.Sign(_velocity.x), transform.position.y), _collider.radius, ~_ignoreCollsionsLayers))
-            {
-                Vector2 newPosition = new(transform.position.x + Mathf.Sign(_velocity.x), transform.position.y);
-                transform.position = newPosition;
-            }
+            Vector2 closestPoint = hitX.ClosestPoint(transform.position);
+            float sign = Mathf.Sign(_velocity.x);
+            Vector2 newPosition = new(closestPoint.x + (_collider.radius * -sign) + (0.01f * -sign), transform.position.y);
+            transform.position = newPosition;
             _velocity.x = 0f;
         }
     }
@@ -118,11 +126,14 @@ public class PlayerController : MonoBehaviour
         _isCoyoteAvailable = false;
         _isJumpBufferAvailable = true;
     }
-    
+
     private void JumpReleased()
     {
         if (_velocity.y > 0)
+        {
             _velocity.y = 0f;
+            _timeJumpReleased = _time;
+        }
     }
 
     private void CalculateHorizontalMovement()
