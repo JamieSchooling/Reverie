@@ -24,10 +24,18 @@ public class PlayerController : MonoBehaviour
     private float _timeLeftGrounded;
     private bool _isCoyoteAvailable = false;
     private float _timeJumpPressed;
+    private float _timeJumpReleased;
     private bool _isJumpBufferAvailable = false;
 
-    private bool CanUseCoyote => _isCoyoteAvailable && !_isGrounded && _time < _timeLeftGrounded + _coyoteTime;
-    private bool HasBufferedJump => _isJumpBufferAvailable && _time < _timeJumpPressed + _jumpBuffer;
+    private bool CanUseCoyote =>
+        _isCoyoteAvailable
+        && !_isGrounded
+        && _time < _timeLeftGrounded + _coyoteTime;
+    private bool HasBufferedJump =>
+        _isJumpBufferAvailable
+        && _time < _timeJumpPressed + _jumpBuffer
+        && _time - _timeJumpReleased > _jumpBuffer
+        && _time > _timeJumpPressed + 0.1f;
 
     private void Awake()
     {
@@ -52,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
         ApplyFinalMovement();
     }
-    
+
     private void CheckCollisions()
     {
         Collider2D hitY = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + _velocity.y), _collider.radius, ~_ignoreCollsionsLayers);
@@ -118,11 +126,14 @@ public class PlayerController : MonoBehaviour
         _isCoyoteAvailable = false;
         _isJumpBufferAvailable = true;
     }
-    
+
     private void JumpReleased()
     {
         if (_velocity.y > 0)
+        {
             _velocity.y = 0f;
+            _timeJumpReleased = _time;
+        }
     }
 
     private void CalculateHorizontalMovement()
