@@ -55,13 +55,13 @@ public class PlayerController : MonoBehaviour
     
     private void CheckCollisions()
     {
-        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + _velocity.y), _collider.radius, ~_ignoreCollsionsLayers))
+        Collider2D hitY = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + _velocity.y), _collider.radius, ~_ignoreCollsionsLayers);
+        if (hitY)
         {
-            while (!Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + Mathf.Sign(_velocity.y)), _collider.radius, ~_ignoreCollsionsLayers))
-            {
-                Vector2 newPosition = new(transform.position.x, transform.position.y + Mathf.Sign(_velocity.y));
-                transform.position = newPosition;
-            }
+            Vector2 closestPoint = hitY.ClosestPoint(transform.position);
+            float sign = Mathf.Sign(_velocity.y);
+            Vector2 newPosition = new(transform.position.x, closestPoint.y + (_collider.radius * -sign) + (0.01f * -sign));
+            transform.position = newPosition;
 
             bool doBufferedJump = false;
             if (!_isGrounded && _velocity.y < 0f)
@@ -87,13 +87,13 @@ public class PlayerController : MonoBehaviour
             _timeLeftGrounded = _time;
         }
 
-        if (Physics2D.OverlapCircle(new Vector2(transform.position.x + _velocity.x, transform.position.y), _collider.radius, ~_ignoreCollsionsLayers))
+        Collider2D hitX = Physics2D.OverlapCircle(new Vector2(transform.position.x + _velocity.x, transform.position.y), _collider.radius, ~_ignoreCollsionsLayers);
+        if (hitX)
         {
-            while (!Physics2D.OverlapCircle(new Vector2(transform.position.x + Mathf.Sign(_velocity.x), transform.position.y), _collider.radius, ~_ignoreCollsionsLayers))
-            {
-                Vector2 newPosition = new(transform.position.x + Mathf.Sign(_velocity.x), transform.position.y);
-                transform.position = newPosition;
-            }
+            Vector2 closestPoint = hitX.ClosestPoint(transform.position);
+            float sign = Mathf.Sign(_velocity.x);
+            Vector2 newPosition = new(closestPoint.x + (_collider.radius * -sign) + (0.01f * -sign), transform.position.y);
+            transform.position = newPosition;
             _velocity.x = 0f;
         }
     }
