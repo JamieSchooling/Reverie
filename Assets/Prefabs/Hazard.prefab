@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2682617649080277669}
   - component: {fileID: 8342652935944003755}
   - component: {fileID: 1954743900246795607}
+  - component: {fileID: 1946885069833630770}
   m_Layer: 6
   m_Name: Hazard
   m_TagString: Untagged
@@ -158,3 +159,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1946885069833630770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4577781834058014473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19391e4abdaf9f488d180736de0eb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
