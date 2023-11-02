@@ -12,12 +12,12 @@ public class Respawn : MonoBehaviour
 
     void Awake()
     {
-        _checkpoint.OnCheckpointReached += SetRespawnPoint;
+   
         _respawnPoint = _defaultRespawnPoint;
         RespawnPlayer();
 
     }
-    private void SetRespawnPoint(Vector2 respawnPoint)
+    public void SetRespawnPoint(Vector2 respawnPoint)
     {
         _respawnPoint = respawnPoint;
     }
