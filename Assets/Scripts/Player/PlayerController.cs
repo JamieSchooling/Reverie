@@ -17,20 +17,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _jumpBuffer = 0.2f;
 
     private CircleCollider2D _collider;
-    private Vector2 _velocity = Vector2.zero;
+
     private float _movementInputVector;
-    private bool _isGrounded = false;
+    private Vector2 _velocity = Vector2.zero;
+
     private float _time;
-    private float _timeLeftGrounded;
-    private bool _isCoyoteAvailable = false;
     private float _timeJumpPressed;
     private float _timeJumpReleased;
+    private float _timePlayerLeftGround;
+
+    private bool _isGrounded = false;
+    private bool _isCoyoteAvailable = false;
     private bool _isJumpBufferAvailable = false;
+    private bool _isOnWall = false;
 
     private bool CanUseCoyote =>
         _isCoyoteAvailable
         && !_isGrounded
-        && _time < _timeLeftGrounded + _coyoteTime;
+        && _time < _timePlayerLeftGround + _coyoteTime;
     private bool HasBufferedJump =>
         _isJumpBufferAvailable
         && _time < _timeJumpPressed + _jumpBuffer
@@ -92,7 +96,7 @@ public class PlayerController : MonoBehaviour
         else if (_isGrounded)
         {
             _isGrounded = false;
-            _timeLeftGrounded = _time;
+            _timePlayerLeftGround = _time;
         }
 
         Collider2D hitX = Physics2D.OverlapCircle(new Vector2(transform.position.x + _velocity.x, transform.position.y), _collider.radius, ~_ignoreCollsionsLayers);
@@ -102,13 +106,29 @@ public class PlayerController : MonoBehaviour
             float sign = Mathf.Sign(_velocity.x);
             Vector2 newPosition = new(closestPoint.x + (_collider.radius * -sign) + (0.01f * -sign), transform.position.y);
             transform.position = newPosition;
+
+            if (!_isOnWall)
+            {
+                _isOnWall = true;
+            }
             _velocity.x = 0f;
+        }
+        else if (_isOnWall)
+        {
+            _isOnWall = false;
         }
     }
 
     private void Gravity()
     {
-        _velocity.y = Mathf.MoveTowards(_velocity.y, -_maxFallSpeed, _gravity * Time.fixedDeltaTime);
+        if (_isOnWall && !_isGrounded)
+        {
+            _velocity.y = Mathf.MoveTowards(_velocity.y, -(_maxFallSpeed * 0.1f), _gravity * Time.fixedDeltaTime);
+        }
+        else
+        {
+            _velocity.y = Mathf.MoveTowards(_velocity.y, -_maxFallSpeed, _gravity * Time.fixedDeltaTime);
+        }
     }
 
     private void JumpPressed()
