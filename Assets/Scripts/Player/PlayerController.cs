@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxFallSpeed = 40f;
     [Header("Movement")]
     [SerializeField] private float _jumpForce = 25f;
+    [SerializeField] private Vector2 _wallJumpForce;
     [SerializeField] private float _maxSpeed = 15;
     [SerializeField] private float _acceleration = 100;
     [SerializeField] private float _deceleration = 50;
@@ -31,9 +32,11 @@ public class PlayerController : MonoBehaviour
     private bool _isJumpBufferAvailable = false;
     private bool _isOnWall = false;
 
+    private bool _isFacingRight = true;
+
     private bool CanUseCoyote =>
         _isCoyoteAvailable
-        && !_isGrounded
+        && !_isGrounded && !_isOnWall
         && _time < _timePlayerLeftGround + _coyoteTime;
     private bool HasBufferedJump =>
         _isJumpBufferAvailable
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         Gravity();
         CalculateHorizontalMovement();
+        Flip();
 
         CheckCollisions();
 
@@ -138,6 +142,11 @@ public class PlayerController : MonoBehaviour
             _timeJumpPressed = _time;
             ExecuteJump();
         }
+        else if (_isOnWall && !_isGrounded)
+        {
+            _timeJumpPressed = _time;
+            ExecuteWallJump();
+        }
     }
 
     private void ExecuteJump()
@@ -145,6 +154,13 @@ public class PlayerController : MonoBehaviour
         _velocity.y = _jumpForce;
         _isCoyoteAvailable = false;
         _isJumpBufferAvailable = true;
+    }
+    
+    private void ExecuteWallJump()
+    {
+        _velocity.x = _wallJumpForce.x * (_isFacingRight ? -1 : 1);
+        _velocity.y = _wallJumpForce.y;
+        _isCoyoteAvailable = false;
     }
 
     private void JumpReleased()
@@ -166,6 +182,22 @@ public class PlayerController : MonoBehaviour
         {
             _velocity.x = Mathf.MoveTowards(_velocity.x, _movementInputVector * _maxSpeed, _acceleration * Time.fixedDeltaTime);
         }
+    }
+
+    private void Flip()
+    {
+        Vector3 rotation = transform.localEulerAngles;
+        if (_velocity.x > 0)
+        {
+            rotation.y = 0f;
+            _isFacingRight = true;
+        }
+        else if (_velocity.x < 0)
+        {
+            rotation.y = 180f;
+            _isFacingRight = false;
+        }
+        transform.localEulerAngles = rotation;
     }
 
     private void ApplyFinalMovement()

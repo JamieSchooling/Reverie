@@ -105,6 +105,7 @@ MonoBehaviour:
   _gravity: 2
   _maxFallSpeed: 0.5
   _jumpForce: 0.5
+  _wallJumpForce: {x: 0.6, y: 0.3}
   _maxSpeed: 0.2
   _acceleration: 5
   _deceleration: 2
