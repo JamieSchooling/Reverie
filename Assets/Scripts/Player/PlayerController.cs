@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
-    [SerializeField] private LayerMask _ignoreCollsionsLayers;
+    [SerializeField] private LayerMask _ignoreCollisionsLayers;
     [Header("Gravity")]
     [SerializeField] private float _gravity = 100f;
     [SerializeField] private float _maxFallSpeed = 40f;
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckCollisions()
     {
-        Collider2D hitY = Physics2D.OverlapCircle(new Vector2(_collider.bounds.center.x, _collider.bounds.center.y + _velocity.y), _collider.radius, ~_ignoreCollsionsLayers);
+        Collider2D hitY = Physics2D.OverlapCircle(new Vector2(_collider.bounds.center.x, _collider.bounds.center.y + _velocity.y), _collider.radius, ~_ignoreCollisionsLayers);
         if (hitY)
         {
             Vector2 closestPoint = hitY.ClosestPoint(_collider.bounds.center);
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
             _timePlayerLeftGround = _time;
         }
 
-        Collider2D hitX = Physics2D.OverlapCircle(new Vector2(_collider.bounds.center.x + _velocity.x, _collider.bounds.center.y), _collider.radius, ~_ignoreCollsionsLayers);
+        Collider2D hitX = Physics2D.OverlapCircle(new Vector2(_collider.bounds.center.x + _velocity.x, _collider.bounds.center.y), _collider.radius, ~_ignoreCollisionsLayers);
         if (hitX)
         {
             Vector2 closestPoint = hitX.ClosestPoint(_collider.bounds.center);
