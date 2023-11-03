@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7542169197831046944
 SpriteRenderer:
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: 060152af75433a446a6a147bf758e803, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,18 +99,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 9e882e83c43c0964d8722b42f813f722, type: 2}
-  _ignoreCollsionsLayers:
+  _ignoreCollisionsLayers:
     serializedVersion: 2
     m_Bits: 72
   _gravity: 2
   _maxFallSpeed: 0.5
   _jumpForce: 0.5
   _wallJumpForce: {x: 0.6, y: 0.3}
+  _dashForce: {x: 0.6, y: 0.3}
+  _dashDuration: 0.2
   _maxSpeed: 0.2
   _acceleration: 5
   _deceleration: 2
   _coyoteTime: 0.5
   _jumpBuffer: 0.2
+  _normalSprite: {fileID: 21300000, guid: 060152af75433a446a6a147bf758e803, type: 3}
+  _dashSprite: {fileID: 21300000, guid: b9163d7f7af398d4aa65b35b7faa943d, type: 3}
 --- !u!58 &8820255588609308494
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -143,6 +147,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.20170328}
   serializedVersion: 2
-  m_Radius: 0.48
+  m_Radius: 0.28718373

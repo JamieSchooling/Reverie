@@ -9,6 +9,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
     public event Action OnJumpPressed;
     public event Action OnJumpReleased;
     public event Action OnDashPressed;
+    public event Action<Vector2> OnDashAimed;
     public event Action OnInteractPressed;
 
     private GameInput _gameInput;
@@ -60,6 +61,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
     {
         if (context.phase == InputActionPhase.Performed)
             OnDashPressed?.Invoke();
+    }
+
+    public void OnDashAim(InputAction.CallbackContext context)
+    {
+        OnDashAimed?.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnInteract(InputAction.CallbackContext context)
