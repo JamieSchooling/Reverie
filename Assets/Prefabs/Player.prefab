@@ -103,7 +103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   _gravity: 2
-  _maxFallSpeed: 10
+  _maxFallSpeed: 0.5
   _jumpForce: 0.5
   _maxSpeed: 0.2
   _acceleration: 5
