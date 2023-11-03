@@ -1161,25 +1161,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 196356392272203882, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
-      propertyPath: _wallJumpForce.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 196356392272203882, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
-      propertyPath: _wallJumpForce.y
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 3688996549839793634, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7542169197831046944, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 060152af75433a446a6a147bf758e803, type: 3}
-    - target: {fileID: 7542169197831046944, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7679557148423797167, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
       propertyPath: m_RootOrder
