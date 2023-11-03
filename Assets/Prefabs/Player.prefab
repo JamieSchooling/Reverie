@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 9e882e83c43c0964d8722b42f813f722, type: 2}
-  _ignoreCollsionsLayers:
+  _ignoreCollisionsLayers:
     serializedVersion: 2
     m_Bits: 72
   _gravity: 2
