@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &337793522
 Transform:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 2142113913}
   _speed: 40
-  _shouldResetToHere: 1
+  _shouldResetToHere: 0
 --- !u!61 &337793524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9778,7 +9778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1215877930
 Transform:
   m_ObjectHideFlags: 0
@@ -9808,7 +9808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 2142113913}
   _speed: 40
-  _shouldResetToHere: 1
+  _shouldResetToHere: 0
 --- !u!61 &1215877932
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10260,6 +10260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8a7b80197ccb5458537bb493da6e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputReader: {fileID: 0}
   _defaultCameraTarget: {fileID: 2142113913}
 --- !u!1 &1512803782
 GameObject:
@@ -10898,7 +10899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1973879058
 Transform:
   m_ObjectHideFlags: 0
@@ -10928,7 +10929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 2142113913}
   _speed: 40
-  _shouldResetToHere: 1
+  _shouldResetToHere: 0
 --- !u!61 &1973879060
 BoxCollider2D:
   m_ObjectHideFlags: 0
