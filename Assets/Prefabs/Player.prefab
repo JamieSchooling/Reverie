@@ -165,5 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9385633f718a394fbe2e3dd87ce9812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultRespawnPoint: {x: 0, y: 0}
-  _checkpoint: {fileID: 0}
+  _playerController: {fileID: 196356392272203882}
+  _defaultRespawnPoint: {fileID: 0}

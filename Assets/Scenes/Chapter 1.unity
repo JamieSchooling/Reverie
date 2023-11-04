@@ -9639,17 +9639,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 2035840387}
---- !u!114 &1093979289 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 196356392272203882, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
-  m_PrefabInstance: {fileID: 1943460135}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb81e44f45c91c744a7a7927dcf203b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1115457632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10271,7 +10260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8a7b80197ccb5458537bb493da6e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultCameraTarget: {fileID: 747251141}
+  _defaultCameraTarget: {fileID: 2142113913}
 --- !u!1 &1512803782
 GameObject:
   m_ObjectHideFlags: 0
@@ -10840,13 +10829,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4771599341697849227, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
-      propertyPath: _playerController
-      value: 
-      objectReference: {fileID: 1093979289}
-    - target: {fileID: 4771599341697849227, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
       propertyPath: _defaultRespawnPoint
       value: 
-      objectReference: {fileID: 1993797414}
+      objectReference: {fileID: 451530955}
     - target: {fileID: 7679557148423797167, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
       propertyPath: m_RootOrder
       value: 0
