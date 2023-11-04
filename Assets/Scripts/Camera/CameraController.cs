@@ -1,31 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform _cameraTarget;
-    [SerializeField] private float _speed;
-    private bool _shouldMove = false;
+    [SerializeField] private Transform _defaultCameraTarget;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private Transform _currentTarget;
+    private Transform _targetOnReset;
+    private float _currentSpeed;
+
+    private void Awake()
     {
-        if (collision.TryGetComponent(out PlayerController player))
-        {
-           _shouldMove = true;
-        }
+        _targetOnReset = _defaultCameraTarget;
+        _currentTarget = _defaultCameraTarget;
+
+        ResetCamera();
     }
+
     private void Update()
     {
-        if(_shouldMove)
-        {
+        transform.position = Vector3.MoveTowards(transform.position, _currentTarget.position, _currentSpeed * Time.deltaTime);
+    }
 
-            Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, _cameraTarget.position, _speed * Time.deltaTime);
-            if (Camera.main.transform.position == _cameraTarget.position)
-            {
-                _shouldMove = false;
-            }
-        }
+    public void SetCameraTarget(Transform target, float newSpeed = 40f, bool shouldResetToHere = true)
+    {
+        _currentTarget = target;
+        _currentSpeed = newSpeed;
+        if (shouldResetToHere)
+            _targetOnReset = target;
+    }
+
+    public void ResetCamera()
+    {
+        transform.position = _targetOnReset.position;
+        _currentTarget = _targetOnReset;
     }
 }

@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 2142113913}
   _speed: 40
+  _shouldResetToHere: 1
 --- !u!61 &337793524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -276,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 1617477547}
   _speed: 40
+  _shouldResetToHere: 1
 --- !u!61 &378268752
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9578,6 +9580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 1747841275}
   _speed: 40
+  _shouldResetToHere: 1
 --- !u!61 &1081216086
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9669,7 +9672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916211067334816452, guid: e6449088a0e9738498a824ca991bf207, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4169601
+      value: 0.5151959
       objectReference: {fileID: 0}
     - target: {fileID: 6916211067334816452, guid: e6449088a0e9738498a824ca991bf207, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9677,7 +9680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916211067334816452, guid: e6449088a0e9738498a824ca991bf207, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7167
+      value: -1.6676
       objectReference: {fileID: 0}
     - target: {fileID: 6916211067334816452, guid: e6449088a0e9738498a824ca991bf207, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9816,6 +9819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 2142113913}
   _speed: 40
+  _shouldResetToHere: 1
 --- !u!61 &1215877932
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9908,6 +9912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 2101302319}
   _speed: 40
+  _shouldResetToHere: 0
 --- !u!61 &1357517549
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10039,7 +10044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916211067334816452, guid: e6449088a0e9738498a824ca991bf207, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4169601
+      value: 0.6625913
       objectReference: {fileID: 0}
     - target: {fileID: 6916211067334816452, guid: e6449088a0e9738498a824ca991bf207, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10047,7 +10052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916211067334816452, guid: e6449088a0e9738498a824ca991bf207, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.82
+      value: -3.6972
       objectReference: {fileID: 0}
     - target: {fileID: 6916211067334816452, guid: e6449088a0e9738498a824ca991bf207, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10104,6 +10109,7 @@ GameObject:
   - component: {fileID: 1509597593}
   - component: {fileID: 1509597596}
   - component: {fileID: 1509597597}
+  - component: {fileID: 1509597598}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10178,7 +10184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509597592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.56, y: 0, z: -10}
+  m_LocalPosition: {x: 56.41, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10253,6 +10259,19 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!114 &1509597598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509597592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8a7b80197ccb5458537bb493da6e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultCameraTarget: {fileID: 747251141}
 --- !u!1 &1512803782
 GameObject:
   m_ObjectHideFlags: 0
@@ -10488,6 +10507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 747251141}
   _speed: 40
+  _shouldResetToHere: 1
 --- !u!61 &1678558444
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10826,7 +10846,7 @@ PrefabInstance:
     - target: {fileID: 4771599341697849227, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
       propertyPath: _defaultRespawnPoint
       value: 
-      objectReference: {fileID: 451530955}
+      objectReference: {fileID: 1993797414}
     - target: {fileID: 7679557148423797167, guid: 82d19f748710a0545aea78a2a9be7db8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -10923,6 +10943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 2142113913}
   _speed: 40
+  _shouldResetToHere: 1
 --- !u!61 &1973879060
 BoxCollider2D:
   m_ObjectHideFlags: 0

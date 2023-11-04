@@ -22,5 +22,9 @@ public class Respawn : MonoBehaviour
     {
         _playerController.ResetVelocity();
         transform.position = _respawnPoint;
+        if (Camera.main.TryGetComponent(out CameraController cameraController))
+        {
+            cameraController.ResetCamera();
+        }
     }
 }
