@@ -294,4 +294,9 @@ public class PlayerController : MonoBehaviour
         Vector2 newPosition = new(transform.position.x + _velocity.x, transform.position.y + _velocity.y);
         transform.position = newPosition;
     }
+
+    public void ResetVelocity()
+    {
+        _velocity = Vector2.zero;
+    }
 }
