@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
     private Transform _targetOnReset;
     private float _currentSpeed;
 
+    private bool _shouldMove;
+
     private void Awake()
     {
         _targetOnReset = _defaultCameraTarget;
@@ -18,7 +20,16 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _currentTarget.position, _currentSpeed * Time.deltaTime);
+        if (_shouldMove)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _currentTarget.position, _currentSpeed * Time.unscaledDeltaTime);
+
+            if (transform.position == _currentTarget.position)
+            {
+                _shouldMove = false;
+                Time.timeScale = 1f;
+            }
+        }
     }
 
     public void SetCameraTarget(Transform target, float newSpeed = 40f, bool shouldResetToHere = true)
@@ -27,6 +38,9 @@ public class CameraController : MonoBehaviour
         _currentSpeed = newSpeed;
         if (shouldResetToHere)
             _targetOnReset = target;
+
+        _shouldMove = true;
+        Time.timeScale = 0f;
     }
 
     public void ResetCamera()
