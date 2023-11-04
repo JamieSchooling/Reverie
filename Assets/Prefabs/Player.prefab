@@ -144,7 +144,8 @@ MonoBehaviour:
   _wallJumpForce: {x: 0.6, y: 0.3}
   _maxSpeed: 0.15
   _acceleration: 5
-  _deceleration: 2
+  _groundDeceleration: 2
+  _airDeceleration: 1
   _coyoteTime: 0.1
   _jumpBuffer: 0.2
   _dashForce: {x: 0.6, y: 0.3}
