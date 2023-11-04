@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 _wallJumpForce;
     [SerializeField] private float _maxSpeed = 15;
     [SerializeField] private float _acceleration = 100;
-    [SerializeField] private float _deceleration = 50;
+    [SerializeField] private float _groundDeceleration = 50;
+    [SerializeField] private float _airDeceleration = 1;
     [SerializeField] private float _coyoteTime = 0.5f;
     [SerializeField] private float _jumpBuffer = 0.2f;
 
@@ -265,7 +266,7 @@ public class PlayerController : MonoBehaviour
 
         if (_movementInputVector == 0)
         {
-            _velocity.x = Mathf.MoveTowards(_velocity.x, 0, _deceleration * Time.fixedDeltaTime);
+            _velocity.x = Mathf.MoveTowards(_velocity.x, 0, (_isGrounded ? _groundDeceleration : _airDeceleration) * Time.fixedDeltaTime);
         }
         else
         {
