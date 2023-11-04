@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126530180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9900005, y: 0, z: 0}
+  m_LocalPosition: {x: -0.81, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -201,9 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1eb6d70367fc514d99edd1d781a87c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraTarget: {fileID: 2142113913}
+  _cameraTarget: {fileID: 1747841275}
   _speed: 40
   _shouldResetToHere: 1
+  _shouldAdjustPlayerPosition: 1
 --- !u!61 &337793524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -325,6 +326,7 @@ MonoBehaviour:
   _cameraTarget: {fileID: 1617477547}
   _speed: 40
   _shouldResetToHere: 1
+  _shouldAdjustPlayerPosition: 1
 --- !u!61 &378268752
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9656,6 +9658,7 @@ MonoBehaviour:
   _cameraTarget: {fileID: 1747841275}
   _speed: 40
   _shouldResetToHere: 1
+  _shouldAdjustPlayerPosition: 1
 --- !u!61 &1081216086
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9885,6 +9888,7 @@ MonoBehaviour:
   _cameraTarget: {fileID: 2142113913}
   _speed: 40
   _shouldResetToHere: 1
+  _shouldAdjustPlayerPosition: 1
 --- !u!61 &1215877932
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9991,6 +9995,7 @@ MonoBehaviour:
   _cameraTarget: {fileID: 2101302319}
   _speed: 40
   _shouldResetToHere: 0
+  _shouldAdjustPlayerPosition: 0
 --- !u!61 &1357517549
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10587,6 +10592,7 @@ MonoBehaviour:
   _cameraTarget: {fileID: 747251141}
   _speed: 40
   _shouldResetToHere: 1
+  _shouldAdjustPlayerPosition: 1
 --- !u!61 &1678558444
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11019,9 +11025,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1eb6d70367fc514d99edd1d781a87c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraTarget: {fileID: 2142113913}
+  _cameraTarget: {fileID: 1617477547}
   _speed: 40
   _shouldResetToHere: 1
+  _shouldAdjustPlayerPosition: 1
 --- !u!61 &1973879060
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11079,7 +11086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa06137ad39b81f409c3812b168eee75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPoint: {fileID: 0}
+  _spawnPoint: {fileID: 126530181}
 --- !u!1 &1976626185
 GameObject:
   m_ObjectHideFlags: 0
@@ -11138,7 +11145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993797413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3300004, y: 0, z: 0}
+  m_LocalPosition: {x: 0.83, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
