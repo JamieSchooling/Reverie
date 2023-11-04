@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7679557148423797167}
   - component: {fileID: 7542169197831046944}
-  - component: {fileID: 196356392272203882}
   - component: {fileID: 8820255588609308494}
+  - component: {fileID: 196356392272203882}
+  - component: {fileID: 4771599341697849227}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7542169197831046944
 SpriteRenderer:
@@ -86,35 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &196356392272203882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3688996549839793634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb81e44f45c91c744a7a7927dcf203b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: 9e882e83c43c0964d8722b42f813f722, type: 2}
-  _ignoreCollisionsLayers:
-    serializedVersion: 2
-    m_Bits: 72
-  _gravity: 2
-  _maxFallSpeed: 0.5
-  _jumpForce: 0.5
-  _wallJumpForce: {x: 0.6, y: 0.3}
-  _dashForce: {x: 0.6, y: 0.3}
-  _dashDuration: 0.2
-  _maxSpeed: 0.2
-  _acceleration: 5
-  _deceleration: 2
-  _coyoteTime: 0.5
-  _jumpBuffer: 0.2
-  _normalSprite: {fileID: 21300000, guid: 060152af75433a446a6a147bf758e803, type: 3}
-  _dashSprite: {fileID: 21300000, guid: b9163d7f7af398d4aa65b35b7faa943d, type: 3}
 --- !u!58 &8820255588609308494
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -150,3 +122,48 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.20170328}
   serializedVersion: 2
   m_Radius: 0.28718373
+--- !u!114 &196356392272203882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3688996549839793634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb81e44f45c91c744a7a7927dcf203b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 9e882e83c43c0964d8722b42f813f722, type: 2}
+  _ignoreCollisionsLayers:
+    serializedVersion: 2
+    m_Bits: 72
+  _gravity: 2
+  _maxFallSpeed: 0.5
+  _jumpForce: 0.5
+  _wallJumpForce: {x: 0.6, y: 0.3}
+  _maxSpeed: 0.2
+  _acceleration: 5
+  _deceleration: 2
+  _coyoteTime: 0.5
+  _jumpBuffer: 0.2
+  _dashForce: {x: 0.6, y: 0.3}
+  _dashDuration: 0.2
+  _dashCooldown: 0.1
+  _dashGhosts: []
+  _normalSprite: {fileID: 21300000, guid: 060152af75433a446a6a147bf758e803, type: 3}
+  _dashSprite: {fileID: 21300000, guid: b9163d7f7af398d4aa65b35b7faa943d, type: 3}
+--- !u!114 &4771599341697849227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3688996549839793634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9385633f718a394fbe2e3dd87ce9812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultRespawnPoint: {x: 0, y: 0}
+  _checkpoint: {fileID: 0}
