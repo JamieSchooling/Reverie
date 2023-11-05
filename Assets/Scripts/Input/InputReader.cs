@@ -70,7 +70,6 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
         aimValue.y = Mathf.RoundToInt(aimValue.y);
         aimValue.Normalize();
         OnDashAimed?.Invoke(aimValue);
-        Debug.Log(aimValue);
     }
 
     public void OnInteract(InputAction.CallbackContext context)
