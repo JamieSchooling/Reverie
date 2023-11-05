@@ -9,6 +9,7 @@ public class SlowFallPowerUp : MonoBehaviour
         if (collision.TryGetComponent(out PlayerController player))
         {
             player.IsSlowFalling = true;
+            Destroy(gameObject);
         }
     }
 }
