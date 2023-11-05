@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip _jumpSFX;
     [SerializeField] private AudioClip _landSFX;
 
-    private CircleCollider2D _collider;
+    private BoxCollider2D _collider;
     private SpriteRenderer _spriteRenderer;
 
     private float _movementInputVector;
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _collider = GetComponent<CircleCollider2D>();
+        _collider = GetComponent<BoxCollider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.sprite = _normalSprite;
 
@@ -107,17 +107,17 @@ public class PlayerController : MonoBehaviour
 
     private void CheckCollisions()
     {
-        Collider2D hitY = Physics2D.OverlapCircle(new Vector2(_collider.bounds.center.x, _collider.bounds.center.y + _velocity.y), _collider.radius, ~_ignoreCollisionsLayers);
+        Collider2D hitY = Physics2D.OverlapBox(new Vector2(_collider.bounds.center.x, _collider.bounds.center.y + _velocity.y), _collider.size, 0f, ~_ignoreCollisionsLayers);
         if (hitY)
         {
             Vector2 closestPoint = hitY.ClosestPoint(_collider.bounds.center);
             closestPoint.y -= _collider.offset.y;
             float sign = Mathf.Sign(_velocity.y);
-            Vector2 newPosition = new(transform.position.x, closestPoint.y + (_collider.radius * -sign) + (0.01f * -sign));
+            Vector2 newPosition = new(transform.position.x, closestPoint.y + (_collider.size.y * 0.5f * -sign) + (0.05f * -sign));
             transform.position = newPosition;
 
             bool doBufferedJump = false;
-            if (!_isGrounded && _velocity.y < 0f)
+            if (!_isGrounded && _velocity.y <= 0f)
             {
                 _audioEventChannel.RequestPlayAudio(_landSFX);
 
@@ -146,12 +146,12 @@ public class PlayerController : MonoBehaviour
             _timePlayerLeftGround = _time;
         }
 
-        Collider2D hitX = Physics2D.OverlapCircle(new Vector2(_collider.bounds.center.x + _velocity.x, _collider.bounds.center.y), _collider.radius, ~_ignoreCollisionsLayers);
+        Collider2D hitX = Physics2D.OverlapBox(new Vector2(_collider.bounds.center.x + _velocity.x, _collider.bounds.center.y), _collider.size, 0f, ~_ignoreCollisionsLayers);
         if (hitX)
         {
             Vector2 closestPoint = hitX.ClosestPoint(_collider.bounds.center);
             float sign = Mathf.Sign(_velocity.x);
-            Vector2 newPosition = new(closestPoint.x + (_collider.radius * -sign) + (0.01f * -sign), transform.position.y);
+            Vector2 newPosition = new(closestPoint.x + (_collider.size.x * 0.5f * -sign) + (0.05f * -sign), transform.position.y);
             transform.position = newPosition;
 
             if (!_isOnWall)
