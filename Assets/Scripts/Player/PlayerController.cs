@@ -32,6 +32,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite _normalSprite;
     [SerializeField] private Sprite _dashSprite;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventChannel _audioEventChannel;
+    [SerializeField] private AudioClip _jumpSFX;
+    [SerializeField] private AudioClip _landSFX;
+
     private CircleCollider2D _collider;
     private SpriteRenderer _spriteRenderer;
 
@@ -114,14 +119,19 @@ public class PlayerController : MonoBehaviour
             bool doBufferedJump = false;
             if (!_isGrounded && _velocity.y < 0f)
             {
+                _audioEventChannel.RequestPlayAudio(_landSFX);
+
                 _isGrounded = true;
                 _isCoyoteAvailable = true;
                 IsSlowFalling = false;
+
                 StartCoroutine(EndDash());
+
                 if (HasBufferedJump)
                     doBufferedJump = true;
 
                 _isJumpBufferAvailable = false;
+
             }
             _velocity.y = 0f;
 
@@ -188,6 +198,8 @@ public class PlayerController : MonoBehaviour
 
     private void ExecuteJump()
     {
+        _audioEventChannel.RequestPlayAudio(_jumpSFX);
+
         _velocity.y = _jumpForce;
         _isCoyoteAvailable = false;
         _isJumpBufferAvailable = true;
@@ -195,6 +207,8 @@ public class PlayerController : MonoBehaviour
     
     private void ExecuteWallJump()
     {
+        _audioEventChannel.RequestPlayAudio(_jumpSFX);
+
         _velocity.x = _wallJumpForce.x * (_isFacingRight ? -1 : 1);
         _velocity.y = _wallJumpForce.y;
         _isCoyoteAvailable = false;
