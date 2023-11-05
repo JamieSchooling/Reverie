@@ -65,7 +65,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
 
     public void OnDashAim(InputAction.CallbackContext context)
     {
-        OnDashAimed?.Invoke(context.ReadValue<Vector2>());
+        Vector2 aimValue = context.ReadValue<Vector2>();
+        aimValue.x = Mathf.RoundToInt(aimValue.x);
+        aimValue.y = Mathf.RoundToInt(aimValue.y);
+        aimValue.Normalize();
+        OnDashAimed?.Invoke(aimValue);
     }
 
     public void OnInteract(InputAction.CallbackContext context)
