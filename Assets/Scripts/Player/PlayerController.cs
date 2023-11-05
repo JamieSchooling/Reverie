@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [Header("Gravity")]
     [SerializeField] private float _gravity = 100f;
     [SerializeField] private float _maxFallSpeed = 40f;
+    [SerializeField] private float _slowFallSpeed = 0.1f;
 
     [Header("Movement")]
     [SerializeField] private float _jumpForce = 25f;
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
         && _time - _timeJumpReleased > _jumpBuffer
         && _time > _timeJumpPressed + 0.1f;
 
+    public bool IsSlowFalling { get; set; } = false;
+
     private void Awake()
     {
         _collider = GetComponent<CircleCollider2D>();
@@ -113,6 +116,7 @@ public class PlayerController : MonoBehaviour
             {
                 _isGrounded = true;
                 _isCoyoteAvailable = true;
+                IsSlowFalling = false;
                 StartCoroutine(EndDash());
                 if (HasBufferedJump)
                     doBufferedJump = true;
@@ -154,7 +158,11 @@ public class PlayerController : MonoBehaviour
 
     private void Gravity()
     {
-        if (_isOnWall && !_isGrounded)
+        if (IsSlowFalling)
+        {
+            _velocity.y = Mathf.MoveTowards(_velocity.y, -_slowFallSpeed, _currentGravity * Time.fixedDeltaTime);
+        }
+        else if (_isOnWall && !_isGrounded)
         {
             _velocity.y = Mathf.MoveTowards(_velocity.y, -(_maxFallSpeed * 0.1f), _currentGravity * Time.fixedDeltaTime);
         }
