@@ -208,6 +208,7 @@ MonoBehaviour:
     m_Bits: 72
   _gravity: 2
   _maxFallSpeed: 0.5
+  _slowFallSpeed: 0.05
   _jumpForce: 0.5
   _wallJumpForce: {x: 0.6, y: 0.3}
   _maxSpeed: 0.15
