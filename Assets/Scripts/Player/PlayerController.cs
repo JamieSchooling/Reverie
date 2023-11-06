@@ -113,7 +113,8 @@ public class PlayerController : MonoBehaviour
             Vector2 closestPoint = hitY.ClosestPoint(_collider.bounds.center);
             closestPoint.y -= _collider.offset.y;
             float sign = Mathf.Sign(_velocity.y);
-            Vector2 newPosition = new(transform.position.x, closestPoint.y + (_collider.size.y * 0.5f * -sign) + (0.05f * -sign));
+            bool isInBounds = _collider.bounds.max.x > closestPoint.x && closestPoint.x > _collider.bounds.min.x;
+            Vector2 newPosition = new(transform.position.x, closestPoint.y + (isInBounds ? (_collider.size.y * 0.5f * -sign) + (0.05f * -sign) : 0));
             transform.position = newPosition;
 
             bool doBufferedJump = false;
@@ -151,7 +152,8 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 closestPoint = hitX.ClosestPoint(_collider.bounds.center);
             float sign = Mathf.Sign(_velocity.x);
-            Vector2 newPosition = new(closestPoint.x + (_collider.size.x * 0.5f * -sign) + (0.05f * -sign), transform.position.y);
+            bool isInBounds = _collider.bounds.max.y > closestPoint.y && closestPoint.y > _collider.bounds.min.y;
+            Vector2 newPosition = new(closestPoint.x + (isInBounds ? (_collider.size.x * 0.5f * -sign) + (0.05f * -sign) : 0), transform.position.y);
             transform.position = newPosition;
 
             if (!_isOnWall)
