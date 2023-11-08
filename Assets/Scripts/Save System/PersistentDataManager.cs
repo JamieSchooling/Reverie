@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DataPersistenceManager : MonoBehaviour
+public class PersistentDataManager : MonoBehaviour
 {
     [Header("File Storage Config")]
     [SerializeField] private string _fileName;
@@ -14,7 +14,9 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> _dataPersistenceObjects;
     private FileDataHandler _fileDataHandler;
 
-    public static DataPersistenceManager Instance { get; private set; }
+    private string _selectedProfileId = "test";
+
+    public static PersistentDataManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -74,7 +76,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void LoadGame()
     {
-        _gameData = _fileDataHandler.Load();
+        _gameData = _fileDataHandler.Load(_selectedProfileId);
 
         if (_gameData == null)
         {
@@ -95,6 +97,11 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObject.SaveData(ref _gameData);
         }
 
-        _fileDataHandler.Save(_gameData);
+        _fileDataHandler.Save(_gameData, _selectedProfileId);
+    }
+
+    public Dictionary<string, GameData> GetAllProfilesGameData()
+    {
+        return _fileDataHandler.LoadAllProfiles();
     }
 }
