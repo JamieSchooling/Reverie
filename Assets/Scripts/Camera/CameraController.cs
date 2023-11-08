@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private Transform _defaultCameraTarget;
 
@@ -58,5 +58,21 @@ public class CameraController : MonoBehaviour
     {
         transform.position = _targetOnReset.position;
         _currentTarget = _targetOnReset;
+    }
+
+    public void LoadData(GameData data)
+    {
+        _targetOnReset = data.cameraTargetOnReset;
+
+        if (_targetOnReset == null) _targetOnReset = _defaultCameraTarget;
+
+        _currentTarget = _targetOnReset;
+
+        transform.position = _currentTarget.position;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.cameraTargetOnReset = _targetOnReset;
     }
 }
