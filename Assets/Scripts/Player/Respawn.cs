@@ -10,7 +10,9 @@ public class Respawn : MonoBehaviour
     void Awake()
     {   
         _respawnPoint = _defaultRespawnPoint.transform.position;
-        RespawnPlayer();
+
+        _playerController.ResetVelocity();
+        transform.position = _respawnPoint;
     }
 
     public void SetRespawnPoint(Vector2 respawnPoint)

@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
         && _time - _timeJumpReleased > _jumpBuffer
         && _time > _timeJumpPressed + 0.1f;
 
+    public bool IsDashUnlocked { get; set; } = false;
     public bool IsSlowFalling { get; set; } = false;
 
     private void Awake()
@@ -236,7 +237,7 @@ public class PlayerController : MonoBehaviour
 
     private void DashPressed()
     {
-        if (!_isDashing && _canDash)
+        if (!_isDashing && _canDash && IsDashUnlocked)
             StartCoroutine(ExecuteDash());
     }
 
@@ -251,7 +252,7 @@ public class PlayerController : MonoBehaviour
         if (_dashAimVector.sqrMagnitude == 0)
         {
             _velocity.y = 0.01f;
-            _velocity.x = _dashForce.x * (_isFacingRight ? 0.5f : -0.5f);
+            _velocity.x = _dashForce.x * (_isFacingRight ? 1f : -1f);
         }
         else if (_dashAimVector.y == 0)
         {
