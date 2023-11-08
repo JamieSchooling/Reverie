@@ -49,11 +49,13 @@ public class PlayerController : MonoBehaviour
     private float _timeJumpPressed;
     private float _timeJumpReleased;
     private float _timePlayerLeftGround;
+    private float _timePlayerLeftWall;
 
     private bool _isGrounded = false;
     private bool _isCoyoteAvailable = false;
     private bool _isJumpBufferAvailable = false;
     private bool _isOnWall = false;
+    private float _directionFacingWall;
     private bool _canMove = true;
     private bool _isDashing = false;
     private bool _canDash = true;
@@ -64,6 +66,10 @@ public class PlayerController : MonoBehaviour
         _isCoyoteAvailable
         && !_isGrounded && !_isOnWall
         && _time < _timePlayerLeftGround + _coyoteTime;
+    private bool CanUseWallCoyote =>
+        _isCoyoteAvailable
+        && !_isGrounded && !_isOnWall
+        && _time < _timePlayerLeftWall + _coyoteTime;
     private bool HasBufferedJump =>
         _isJumpBufferAvailable
         && _time < _timeJumpPressed + _jumpBuffer
@@ -159,12 +165,15 @@ public class PlayerController : MonoBehaviour
             if (!_isOnWall)
             {
                 _isOnWall = true;
+                _isCoyoteAvailable = true;
+                _directionFacingWall = sign;
             }
             _velocity.x = 0f;
         }
         else if (_isOnWall)
         {
             _isOnWall = false;
+            _timePlayerLeftWall = _time;
         }
     }
 
@@ -186,12 +195,12 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPressed()
     {
-        if (_isGrounded || CanUseCoyote && !_isDashing)
+        if ((_isGrounded || CanUseCoyote) && !_isDashing)
         {
             _timeJumpPressed = _time;
             ExecuteJump();
         }
-        else if (_isOnWall && !_isGrounded)
+        else if ((_isOnWall || CanUseWallCoyote) && !_isGrounded)
         {
             _timeJumpPressed = _time;
             ExecuteWallJump();
@@ -211,7 +220,7 @@ public class PlayerController : MonoBehaviour
     {
         _audioEventChannel.RequestPlayAudio(_jumpSFX);
 
-        _velocity.x = _wallJumpForce.x * (_isFacingRight ? -1 : 1);
+        _velocity.x = _wallJumpForce.x * -_directionFacingWall;
         _velocity.y = _wallJumpForce.y;
         _isCoyoteAvailable = false;
     }
