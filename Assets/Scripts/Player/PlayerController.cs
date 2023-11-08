@@ -251,7 +251,7 @@ public class PlayerController : MonoBehaviour
         if (_dashAimVector.sqrMagnitude == 0)
         {
             _velocity.y = 0.01f;
-            _velocity.x = _dashForce.x * (_isFacingRight ? 0.5f : -0.5f);
+            _velocity.x = _dashForce.x * (_isFacingRight ? 1f : -1f);
         }
         else if (_dashAimVector.y == 0)
         {

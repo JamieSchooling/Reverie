@@ -217,7 +217,7 @@ MonoBehaviour:
   _airDeceleration: 1
   _coyoteTime: 0.1
   _jumpBuffer: 0.2
-  _dashForce: {x: 0.6, y: 0.3}
+  _dashForce: {x: 0.4, y: 0.3}
   _dashDuration: 0.2
   _dashCooldown: 0.1
   _dashGhosts:
