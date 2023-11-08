@@ -46,7 +46,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        OnMoveInput?.Invoke(context.ReadValue<float>());
+        OnMoveInput?.Invoke(Mathf.Round(context.ReadValue<float>()));
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -65,7 +65,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
 
     public void OnDashAim(InputAction.CallbackContext context)
     {
-        OnDashAimed?.Invoke(context.ReadValue<Vector2>());
+        Vector2 aimValue = context.ReadValue<Vector2>();
+        aimValue.x = Mathf.Round(aimValue.x);
+        aimValue.y = Mathf.Round(aimValue.y);
+        aimValue.Normalize();
+        OnDashAimed?.Invoke(aimValue);
     }
 
     public void OnInteract(InputAction.CallbackContext context)
