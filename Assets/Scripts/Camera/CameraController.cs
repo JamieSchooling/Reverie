@@ -5,8 +5,8 @@ public class CameraController : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private Transform _defaultCameraTarget;
 
-    private Transform _currentTarget;
-    private Transform _targetOnReset;
+    private Vector3 _currentTarget;
+    private Vector3 _targetOnReset;
     private float _currentSpeed;
 
     private bool _shouldMove;
@@ -16,23 +16,15 @@ public class CameraController : MonoBehaviour, IDataPersistence
 
     private Action _onTargetReached;
 
-    private void Awake()
-    {
-        _targetOnReset = _defaultCameraTarget;
-        _currentTarget = _defaultCameraTarget;
-
-        ResetCamera();
-    }
-
     private void Update()
     {
         _time += Time.unscaledDeltaTime;
 
         if (_shouldMove)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _currentTarget.position, _currentSpeed * Time.unscaledDeltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _currentTarget, _currentSpeed * Time.unscaledDeltaTime);
 
-            if (transform.position == _currentTarget.position)
+            if (transform.position == _currentTarget)
             {
                 _shouldMove = false;
                 Time.timeScale = 1f;
@@ -43,10 +35,10 @@ public class CameraController : MonoBehaviour, IDataPersistence
 
     public void SetCameraTarget(Transform target, float newSpeed = 40f, bool shouldResetToHere = true, Action onTargetReached = null)
     {
-        _currentTarget = target;
+        _currentTarget = target.position;
         _currentSpeed = newSpeed;
         if (shouldResetToHere)
-            _targetOnReset = target;
+            _targetOnReset = target.position;
 
         _shouldMove = true;
         _timeStartedMoving = _time;
@@ -56,19 +48,23 @@ public class CameraController : MonoBehaviour, IDataPersistence
 
     public void ResetCamera()
     {
-        transform.position = _targetOnReset.position;
+        transform.position = _targetOnReset;
         _currentTarget = _targetOnReset;
     }
 
     public void LoadData(GameData data)
     {
+        Debug.Log("Loading Camera Data");
         _targetOnReset = data.cameraTargetOnReset;
+        Debug.Log(_targetOnReset);
 
-        if (_targetOnReset == null) _targetOnReset = _defaultCameraTarget;
+        if (_targetOnReset == Vector3.zero) _targetOnReset = _defaultCameraTarget.position;
 
         _currentTarget = _targetOnReset;
+        Debug.Log(_currentTarget);
 
-        transform.position = _currentTarget.position;
+        transform.position = _currentTarget;
+        Debug.Log(transform.position);
     }
 
     public void SaveData(ref GameData data)

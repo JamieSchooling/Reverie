@@ -5,14 +5,14 @@ public class GameData
 {
     public int deathCount;
     public Vector2 playerRespawnPoint;
-    public Transform cameraTargetOnReset;
+    public Vector3 cameraTargetOnReset;
     public bool isDashUnlocked = false;
 
     public GameData()
     {
         deathCount = 0;
         playerRespawnPoint = Vector2.zero;
-        cameraTargetOnReset = null;
+        cameraTargetOnReset = Vector3.zero;
         isDashUnlocked = false;
     }
 }
