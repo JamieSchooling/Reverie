@@ -69,6 +69,12 @@ public class PersistentDataManager : MonoBehaviour
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
 
+    public void ChangeSelectedProfileid(string newProfileId)
+    {
+        _selectedProfileId = newProfileId;
+        LoadGame();
+    }
+
     public void NewGame()
     {
         _gameData = new GameData();
