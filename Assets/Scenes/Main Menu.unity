@@ -1728,10 +1728,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 966988968}
     m_Modifications:
+    - target: {fileID: 1296189537960150972, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3351749401659817623, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1716907212}
+    - target: {fileID: 5345704178638158742, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7123364757296743893, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
       propertyPath: _profileId
       value: 2
@@ -2454,7 +2462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1716907211
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3092,10 +3100,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 966988968}
     m_Modifications:
+    - target: {fileID: 1296189537960150972, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3351749401659817623, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1716907212}
+    - target: {fileID: 5345704178638158742, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7123364757296743893, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
       propertyPath: _profileId
       value: 1
@@ -3276,7 +3292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2081061605
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3333,10 +3349,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 966988968}
     m_Modifications:
+    - target: {fileID: 1296189537960150972, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3351749401659817623, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1716907212}
+    - target: {fileID: 5345704178638158742, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7364404466076851086, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
       propertyPath: m_Name
       value: Save Slot 1

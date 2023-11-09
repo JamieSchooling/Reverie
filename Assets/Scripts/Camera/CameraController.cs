@@ -54,17 +54,13 @@ public class CameraController : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        Debug.Log("Loading Camera Data");
         _targetOnReset = data.cameraTargetOnReset;
-        Debug.Log(_targetOnReset);
 
         if (_targetOnReset == Vector3.zero) _targetOnReset = _defaultCameraTarget.position;
 
         _currentTarget = _targetOnReset;
-        Debug.Log(_currentTarget);
 
         transform.position = _currentTarget;
-        Debug.Log(transform.position);
     }
 
     public void SaveData(ref GameData data)

@@ -16,13 +16,17 @@ public class Respawn : MonoBehaviour, IDataPersistence
     public void RespawnPlayer()
     {
         _deathCount++;
-        Debug.Log(_deathCount);
-        _playerController.ResetVelocity();
-        transform.position = _respawnPoint;
         if (Camera.main.TryGetComponent(out CameraController cameraController))
         {
             cameraController.ResetCamera();
         }
+        ResetPosition();
+    }
+
+    public void ResetPosition()
+    {
+        _playerController.ResetVelocity();
+        transform.position = _respawnPoint;
     }
 
     public void LoadData(GameData data)

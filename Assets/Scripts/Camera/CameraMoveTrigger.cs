@@ -31,7 +31,7 @@ public class CameraMoveTrigger : MonoBehaviour
 
             _cameraController.SetCameraTarget(
                 _cameraTarget, _speed, _shouldResetToHere, 
-                _shouldAdjustPlayerPosition ? player.RespawnPlayer : null);
+                _shouldAdjustPlayerPosition ? player.ResetPosition : null);
         }
     }
 }
