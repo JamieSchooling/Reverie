@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Input/Input Reader")]
-public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IPauseActions
+public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IPauseActions, GameInput.IChapterSelectActions
 {
     public event Action<float> OnMoveInput;
     public event Action OnJumpPressed;
@@ -14,6 +14,8 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 
     public event Action OnPausePressed;
 
+    public event Action<int> OnChapterSelectSwitch;
+
     private GameInput _gameInput;
 
     private void OnEnable()
@@ -23,6 +25,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
             _gameInput = new GameInput();
             _gameInput.Gameplay.SetCallbacks(this);
             _gameInput.Pause.SetCallbacks(this);
+            _gameInput.ChapterSelect.SetCallbacks(this);
         }
         _gameInput.Enable();
     }
@@ -55,6 +58,16 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public void DisablePauseInput()
     {
         _gameInput.Pause.Disable();
+    }
+
+    public void EnableChapterSelectInput()
+    {
+        _gameInput.ChapterSelect.Enable();
+    }
+
+    public void DisableChapterSelectInput()
+    {
+        _gameInput.ChapterSelect.Disable();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -95,5 +108,14 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     {
         if (context.phase == InputActionPhase.Performed)
             OnPausePressed?.Invoke();
+    }
+
+    public void OnSide(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            int contextValue = Mathf.RoundToInt(context.ReadValue<float>());
+            OnChapterSelectSwitch?.Invoke(contextValue);
+        }
     }
 }
