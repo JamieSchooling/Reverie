@@ -4,11 +4,17 @@ using UnityEngine.UI;
 
 public class ChapterSelect : MonoBehaviour
 {
+    [Header("Input")]
     [SerializeField] private InputReader _inputReader;
+    [Header("Audio")]
     [SerializeField] private AudioEventChannel _switchChannel;
     [SerializeField] private AudioClip _switchAudio;
+    [Header("Camera")]
     [SerializeField] private ChapterSelectCameraController _cameraController;
     [SerializeField] private Transform[] _cameraPositions;
+    [Header("Scenes")]
+    [SerializeField] private SceneObject _prologueScene;
+    [SerializeField] private SceneObject _chapterOneScene;
 
     private int _currentSelectedIndex = 0;
     private bool _canSwitch = false;

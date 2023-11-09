@@ -75,6 +75,11 @@ public class PersistentDataManager : MonoBehaviour
         LoadGame();
     }
 
+    public GameData GetGameDataForSelectedProfile()
+    {
+        return _gameData;
+    }
+
     public void NewGame()
     {
         _gameData = new GameData();

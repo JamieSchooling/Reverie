@@ -1537,6 +1537,10 @@ MonoBehaviour:
   _cameraPositions:
   - {fileID: 1487049647}
   - {fileID: 1724601510}
+  _prologueScene:
+    m_SceneName: Chapter 1
+  _chapterOneScene:
+    m_SceneName: Chapter 1
 --- !u!1 &1568622158
 GameObject:
   m_ObjectHideFlags: 0

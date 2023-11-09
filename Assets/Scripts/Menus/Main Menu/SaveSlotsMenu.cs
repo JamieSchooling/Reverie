@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class SaveSlotsMenu : MonoBehaviour
 {
+    [Header("Scenes")]
+    [SerializeField] private SceneObject _chapterSelectScene;
+    [SerializeField] private SceneObject _prologueScene;
+
+    [Header("Back Button")]
     [SerializeField] private Button _backButton;
 
     private SaveSlot[] _saveSlots;
@@ -38,7 +43,14 @@ public class SaveSlotsMenu : MonoBehaviour
 
         PersistentDataManager.Instance.ChangeSelectedProfileid(saveSlot.GetProfileId());
 
-        SceneManager.LoadSceneAsync("Chapter 1");
+        if (PersistentDataManager.Instance.GetGameDataForSelectedProfile().isPrologueComplete)
+        {
+            SceneManager.LoadSceneAsync(_chapterSelectScene);
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(_prologueScene);
+        }
     }
 
     private void DisableMenuButtons()
