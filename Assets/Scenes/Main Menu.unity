@@ -1345,6 +1345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c88c9c4551b50143854dc55e04c9f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chapterSelectScene:
+    m_SceneName: Chapter Select
+  _prologueScene:
+    m_SceneName: Chapter 1
   _backButton: {fileID: 438921719}
 --- !u!1 &883282144
 GameObject:

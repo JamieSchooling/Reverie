@@ -422,6 +422,131 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ChapterSelect"",
+            ""id"": ""ebd04473-454b-4d0e-bc01-3e7008a74522"",
+            ""actions"": [
+                {
+                    ""name"": ""Side"",
+                    ""type"": ""Value"",
+                    ""id"": ""6a6ec4c0-7998-4a93-93f8-df3e668db5a9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Submit"",
+                    ""type"": ""Button"",
+                    ""id"": ""dab84386-fdc9-4451-af86-f7b228f692c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""d268089a-de03-4a01-aa25-8c3e9e1d0f84"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Side"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""8c3622ec-6566-4785-9a88-11f2793f7e96"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Side"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5a3f4b4b-c963-41cd-8079-dfd2634fe8cf"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Side"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""0b2760d7-f978-4d91-b236-5e98f2c34b9f"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Side"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""44d050c1-701f-4b53-bc0b-873b006f11ac"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Side"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac2ec716-85ee-431e-9b88-8a03288edc7c"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Side"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01ea8edf-9414-49ab-9be9-15d9ddfc9c56"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Side"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88c36b03-2186-4eb7-9620-2ec98c4f6d71"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2eed11bc-611e-48e8-a619-d1cfb038f2b3"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -459,6 +584,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         // Pause
         m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
         m_Pause_Pause = m_Pause.FindAction("Pause", throwIfNotFound: true);
+        // ChapterSelect
+        m_ChapterSelect = asset.FindActionMap("ChapterSelect", throwIfNotFound: true);
+        m_ChapterSelect_Side = m_ChapterSelect.FindAction("Side", throwIfNotFound: true);
+        m_ChapterSelect_Submit = m_ChapterSelect.FindAction("Submit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -640,6 +769,60 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
     }
     public PauseActions @Pause => new PauseActions(this);
+
+    // ChapterSelect
+    private readonly InputActionMap m_ChapterSelect;
+    private List<IChapterSelectActions> m_ChapterSelectActionsCallbackInterfaces = new List<IChapterSelectActions>();
+    private readonly InputAction m_ChapterSelect_Side;
+    private readonly InputAction m_ChapterSelect_Submit;
+    public struct ChapterSelectActions
+    {
+        private @GameInput m_Wrapper;
+        public ChapterSelectActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Side => m_Wrapper.m_ChapterSelect_Side;
+        public InputAction @Submit => m_Wrapper.m_ChapterSelect_Submit;
+        public InputActionMap Get() { return m_Wrapper.m_ChapterSelect; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ChapterSelectActions set) { return set.Get(); }
+        public void AddCallbacks(IChapterSelectActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ChapterSelectActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ChapterSelectActionsCallbackInterfaces.Add(instance);
+            @Side.started += instance.OnSide;
+            @Side.performed += instance.OnSide;
+            @Side.canceled += instance.OnSide;
+            @Submit.started += instance.OnSubmit;
+            @Submit.performed += instance.OnSubmit;
+            @Submit.canceled += instance.OnSubmit;
+        }
+
+        private void UnregisterCallbacks(IChapterSelectActions instance)
+        {
+            @Side.started -= instance.OnSide;
+            @Side.performed -= instance.OnSide;
+            @Side.canceled -= instance.OnSide;
+            @Submit.started -= instance.OnSubmit;
+            @Submit.performed -= instance.OnSubmit;
+            @Submit.canceled -= instance.OnSubmit;
+        }
+
+        public void RemoveCallbacks(IChapterSelectActions instance)
+        {
+            if (m_Wrapper.m_ChapterSelectActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IChapterSelectActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ChapterSelectActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ChapterSelectActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ChapterSelectActions @ChapterSelect => new ChapterSelectActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -669,5 +852,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     public interface IPauseActions
     {
         void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IChapterSelectActions
+    {
+        void OnSide(InputAction.CallbackContext context);
+        void OnSubmit(InputAction.CallbackContext context);
     }
 }
