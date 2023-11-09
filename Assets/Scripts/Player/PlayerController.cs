@@ -85,13 +85,25 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.sprite = _normalSprite;
 
+        _currentGravity = _gravity;
+    }
+
+    private void OnEnable()
+    {
         _inputReader.OnJumpPressed += JumpPressed;
         _inputReader.OnJumpReleased += JumpReleased;
         _inputReader.OnMoveInput += (inputVector) => _movementInputVector = inputVector;
         _inputReader.OnDashPressed += DashPressed;
         _inputReader.OnDashAimed += (aimVector) => _dashAimVector = aimVector;
+    }
 
-        _currentGravity = _gravity;
+    private void OnDisable()
+    {
+        _inputReader.OnJumpPressed -= JumpPressed;
+        _inputReader.OnJumpReleased -= JumpReleased;
+        _inputReader.OnMoveInput -= (inputVector) => _movementInputVector = inputVector;
+        _inputReader.OnDashPressed -= DashPressed;
+        _inputReader.OnDashAimed -= (aimVector) => _dashAimVector = aimVector;
     }
 
     private void Update()

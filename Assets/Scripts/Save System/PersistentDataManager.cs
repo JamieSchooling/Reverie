@@ -14,7 +14,7 @@ public class PersistentDataManager : MonoBehaviour
     private List<IDataPersistence> _dataPersistenceObjects;
     private FileDataHandler _fileDataHandler;
 
-    private string _selectedProfileId = "test";
+    private string _selectedProfileId = "";
 
     public static PersistentDataManager Instance { get; private set; }
 
