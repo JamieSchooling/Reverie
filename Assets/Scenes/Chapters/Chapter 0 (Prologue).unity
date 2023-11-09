@@ -7476,6 +7476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee54bd2f4e2c4cd4da363003be7f7539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 9e882e83c43c0964d8722b42f813f722, type: 2}
+  _dashButtonPrompt: {fileID: 1505305932}
 --- !u!50 &1364185405
 Rigidbody2D:
   serializedVersion: 4
@@ -7739,7 +7741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1505305931
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7778,7 +7780,7 @@ MonoBehaviour:
   _deviceType: 1
   _actionNames:
   - Dash
-  - Move
+  - Dash Aim
   _compositeBinding: 4
 --- !u!114 &1505305933
 MonoBehaviour:
@@ -8170,7 +8172,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1547856857}
-  - component: {fileID: 1547856856}
   - component: {fileID: 1547856855}
   - component: {fileID: 1547856854}
   m_Layer: 6
@@ -8252,18 +8253,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.126793, y: 4.9982967}
   m_EdgeRadius: 0
---- !u!114 &1547856856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547856853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee54bd2f4e2c4cd4da363003be7f7539, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1547856857
 Transform:
   m_ObjectHideFlags: 0
@@ -8905,7 +8894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6673760111138997988, guid: 81b45d157a2a33a44a0a49fe6b2577fd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
