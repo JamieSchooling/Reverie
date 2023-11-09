@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+// NOT MY CODE
+// Credit: https://gist.github.com/Hertzole/ac269f3148bc5192cc2eb6d472870d24
+
 [System.Serializable]
 public class SceneObject
 {
