@@ -27,11 +27,6 @@ public class ButtonPromptText : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (var controlScheme in _gameInput.controlSchemes)
-        {
-            Debug.Log(controlScheme.name);
-        }
-        Debug.Log(playerInput.currentControlScheme);
         SetText();
     }
 
