@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DestructiblePlatform : MonoBehaviour
+public class DestructiblePlatform : MonoBehaviour, IResettable
 {
     [SerializeField] private GameObject _platform;
     [SerializeField] private float _destructionDelay = 1f;
@@ -26,6 +26,14 @@ public class DestructiblePlatform : MonoBehaviour
         _platform.SetActive(false);
 
         yield return new WaitForSeconds(_destructionDuration);
+
+        _platform.SetActive(true);
+        _canDestroy = true;
+    }
+
+    public void ResetObject()
+    {
+        StopAllCoroutines();
 
         _platform.SetActive(true);
         _canDestroy = true;

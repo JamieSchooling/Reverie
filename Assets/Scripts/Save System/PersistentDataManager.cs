@@ -14,7 +14,7 @@ public class PersistentDataManager : MonoBehaviour
     private List<IDataPersistence> _dataPersistenceObjects;
     private FileDataHandler _fileDataHandler;
 
-    private string _selectedProfileId = "test";
+    private string _selectedProfileId = "";
 
     public static PersistentDataManager Instance { get; private set; }
 
@@ -109,5 +109,22 @@ public class PersistentDataManager : MonoBehaviour
     public Dictionary<string, GameData> GetAllProfilesGameData()
     {
         return _fileDataHandler.LoadAllProfiles();
+    }
+
+    public SettingsData GetPlayerPrefs()
+    {
+        SettingsData settingsData = new SettingsData();
+
+        settingsData.isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 1) == 1;
+        settingsData.masterVolume = PlayerPrefs.GetFloat("MasterVolume", settingsData.masterVolume);
+
+        return settingsData;
+    }
+
+    public void SavePlayerPrefs(SettingsData settingsData)
+    {
+        PlayerPrefs.SetInt("IsFullscreen", settingsData.isFullscreen ? 1 : 0);
+        PlayerPrefs.SetFloat("MasterVolume", settingsData.masterVolume);
+        PlayerPrefs.Save();
     }
 }

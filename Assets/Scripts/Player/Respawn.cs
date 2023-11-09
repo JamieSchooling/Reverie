@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Respawn : MonoBehaviour, IDataPersistence
+public class Respawn : MonoBehaviour, IDataPersistence, IResettable
 {
     [SerializeField] PlayerController _playerController;
     [SerializeField] private Transform _defaultRespawnPoint;
@@ -16,13 +16,17 @@ public class Respawn : MonoBehaviour, IDataPersistence
     public void RespawnPlayer()
     {
         _deathCount++;
-        Debug.Log(_deathCount);
-        _playerController.ResetVelocity();
-        transform.position = _respawnPoint;
         if (Camera.main.TryGetComponent(out CameraController cameraController))
         {
             cameraController.ResetCamera();
         }
+        ResetObject();
+    }
+
+    public void ResetObject()
+    {
+        _playerController.ResetVelocity();
+        transform.position = _respawnPoint;
     }
 
     public void LoadData(GameData data)
