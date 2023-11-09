@@ -363,85 +363,41 @@
             ]
         },
         {
-            "name": "Chapter Select",
-            "id": "e2dcb254-96c4-4e02-8297-5449f10b4e57",
+            "name": "Pause",
+            "id": "f7afe134-adba-436a-97d9-c68cfd64545b",
             "actions": [
                 {
-                    "name": "Side",
-                    "type": "Value",
-                    "id": "22f71264-8886-4dd8-a636-83f4587b79db",
-                    "expectedControlType": "",
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "3aada9fe-f84f-4b8e-97f9-afb76c2303a1",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "Arrows",
-                    "id": "9c42e2e9-77e6-4939-8175-ba43b39cd35d",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Side",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "49b98a4e-1a4c-497f-8a72-d71374100a23",
-                    "path": "<Keyboard>/leftArrow",
+                    "name": "",
+                    "id": "a9a023b8-dc9d-4b06-b0e7-e4504bb4313c",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Side",
+                    "action": "Pause",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "dd7b9aab-ed87-43a5-a22c-877fccde8872",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Side",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Gamepad",
-                    "id": "9f3a3fdc-1b4d-461b-8ad8-cb31a58931cf",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "AxisDeadzone",
-                    "groups": "",
-                    "action": "Side",
-                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "a782423a-96cc-4552-b8e3-70db5502b980",
-                    "path": "<Gamepad>/leftStick/left",
+                    "name": "",
+                    "id": "8dd3c5cf-cda0-41f2-9378-b49058f7b9e8",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Side",
+                    "action": "Pause",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "081d483d-69c5-4726-a746-642b33b7dad8",
-                    "path": "<Gamepad>/leftStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Side",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }

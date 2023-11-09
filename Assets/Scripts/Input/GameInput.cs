@@ -385,85 +385,41 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Chapter Select"",
-            ""id"": ""e2dcb254-96c4-4e02-8297-5449f10b4e57"",
+            ""name"": ""Pause"",
+            ""id"": ""f7afe134-adba-436a-97d9-c68cfd64545b"",
             ""actions"": [
                 {
-                    ""name"": ""Side"",
-                    ""type"": ""Value"",
-                    ""id"": ""22f71264-8886-4dd8-a636-83f4587b79db"",
-                    ""expectedControlType"": """",
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""3aada9fe-f84f-4b8e-97f9-afb76c2303a1"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Arrows"",
-                    ""id"": ""9c42e2e9-77e6-4939-8175-ba43b39cd35d"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Side"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""49b98a4e-1a4c-497f-8a72-d71374100a23"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""name"": """",
+                    ""id"": ""a9a023b8-dc9d-4b06-b0e7-e4504bb4313c"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Side"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""dd7b9aab-ed87-43a5-a22c-877fccde8872"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Side"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Gamepad"",
-                    ""id"": ""9f3a3fdc-1b4d-461b-8ad8-cb31a58931cf"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": ""AxisDeadzone"",
-                    ""groups"": """",
-                    ""action"": ""Side"",
-                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""a782423a-96cc-4552-b8e3-70db5502b980"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""name"": """",
+                    ""id"": ""8dd3c5cf-cda0-41f2-9378-b49058f7b9e8"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Side"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""081d483d-69c5-4726-a746-642b33b7dad8"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Side"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -500,9 +456,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_DashAim = m_Gameplay.FindAction("Dash Aim", throwIfNotFound: true);
-        // Chapter Select
-        m_ChapterSelect = asset.FindActionMap("Chapter Select", throwIfNotFound: true);
-        m_ChapterSelect_Side = m_ChapterSelect.FindAction("Side", throwIfNotFound: true);
+        // Pause
+        m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
+        m_Pause_Pause = m_Pause.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -639,51 +595,51 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
 
-    // Chapter Select
-    private readonly InputActionMap m_ChapterSelect;
-    private List<IChapterSelectActions> m_ChapterSelectActionsCallbackInterfaces = new List<IChapterSelectActions>();
-    private readonly InputAction m_ChapterSelect_Side;
-    public struct ChapterSelectActions
+    // Pause
+    private readonly InputActionMap m_Pause;
+    private List<IPauseActions> m_PauseActionsCallbackInterfaces = new List<IPauseActions>();
+    private readonly InputAction m_Pause_Pause;
+    public struct PauseActions
     {
         private @GameInput m_Wrapper;
-        public ChapterSelectActions(@GameInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Side => m_Wrapper.m_ChapterSelect_Side;
-        public InputActionMap Get() { return m_Wrapper.m_ChapterSelect; }
+        public PauseActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Pause_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Pause; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ChapterSelectActions set) { return set.Get(); }
-        public void AddCallbacks(IChapterSelectActions instance)
+        public static implicit operator InputActionMap(PauseActions set) { return set.Get(); }
+        public void AddCallbacks(IPauseActions instance)
         {
-            if (instance == null || m_Wrapper.m_ChapterSelectActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_ChapterSelectActionsCallbackInterfaces.Add(instance);
-            @Side.started += instance.OnSide;
-            @Side.performed += instance.OnSide;
-            @Side.canceled += instance.OnSide;
+            if (instance == null || m_Wrapper.m_PauseActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
-        private void UnregisterCallbacks(IChapterSelectActions instance)
+        private void UnregisterCallbacks(IPauseActions instance)
         {
-            @Side.started -= instance.OnSide;
-            @Side.performed -= instance.OnSide;
-            @Side.canceled -= instance.OnSide;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
-        public void RemoveCallbacks(IChapterSelectActions instance)
+        public void RemoveCallbacks(IPauseActions instance)
         {
-            if (m_Wrapper.m_ChapterSelectActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PauseActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IChapterSelectActions instance)
+        public void SetCallbacks(IPauseActions instance)
         {
-            foreach (var item in m_Wrapper.m_ChapterSelectActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PauseActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_ChapterSelectActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public ChapterSelectActions @ChapterSelect => new ChapterSelectActions(this);
+    public PauseActions @Pause => new PauseActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -710,8 +666,8 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnDashAim(InputAction.CallbackContext context);
     }
-    public interface IChapterSelectActions
+    public interface IPauseActions
     {
-        void OnSide(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

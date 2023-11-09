@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private LayerMask _ignoreCollisionsLayers;
@@ -49,11 +49,13 @@ public class PlayerController : MonoBehaviour
     private float _timeJumpPressed;
     private float _timeJumpReleased;
     private float _timePlayerLeftGround;
+    private float _timePlayerLeftWall;
 
     private bool _isGrounded = false;
     private bool _isCoyoteAvailable = false;
     private bool _isJumpBufferAvailable = false;
     private bool _isOnWall = false;
+    private float _directionFacingWall;
     private bool _canMove = true;
     private bool _isDashing = false;
     private bool _canDash = true;
@@ -64,12 +66,17 @@ public class PlayerController : MonoBehaviour
         _isCoyoteAvailable
         && !_isGrounded && !_isOnWall
         && _time < _timePlayerLeftGround + _coyoteTime;
+    private bool CanUseWallCoyote =>
+        _isCoyoteAvailable
+        && !_isGrounded && !_isOnWall
+        && _time < _timePlayerLeftWall + _coyoteTime;
     private bool HasBufferedJump =>
         _isJumpBufferAvailable
         && _time < _timeJumpPressed + _jumpBuffer
         && _time - _timeJumpReleased > _jumpBuffer
         && _time > _timeJumpPressed + 0.1f;
 
+    public bool IsDashUnlocked { get; set; } = false;
     public bool IsSlowFalling { get; set; } = false;
 
     private void Awake()
@@ -78,13 +85,25 @@ public class PlayerController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.sprite = _normalSprite;
 
+        _currentGravity = _gravity;
+    }
+
+    private void OnEnable()
+    {
         _inputReader.OnJumpPressed += JumpPressed;
         _inputReader.OnJumpReleased += JumpReleased;
         _inputReader.OnMoveInput += (inputVector) => _movementInputVector = inputVector;
         _inputReader.OnDashPressed += DashPressed;
         _inputReader.OnDashAimed += (aimVector) => _dashAimVector = aimVector;
+    }
 
-        _currentGravity = _gravity;
+    private void OnDisable()
+    {
+        _inputReader.OnJumpPressed -= JumpPressed;
+        _inputReader.OnJumpReleased -= JumpReleased;
+        _inputReader.OnMoveInput -= (inputVector) => _movementInputVector = inputVector;
+        _inputReader.OnDashPressed -= DashPressed;
+        _inputReader.OnDashAimed -= (aimVector) => _dashAimVector = aimVector;
     }
 
     private void Update()
@@ -159,12 +178,15 @@ public class PlayerController : MonoBehaviour
             if (!_isOnWall)
             {
                 _isOnWall = true;
+                _isCoyoteAvailable = true;
+                _directionFacingWall = sign;
             }
             _velocity.x = 0f;
         }
         else if (_isOnWall)
         {
             _isOnWall = false;
+            _timePlayerLeftWall = _time;
         }
     }
 
@@ -186,12 +208,12 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPressed()
     {
-        if (_isGrounded || CanUseCoyote && !_isDashing)
+        if ((_isGrounded || CanUseCoyote) && !_isDashing)
         {
             _timeJumpPressed = _time;
             ExecuteJump();
         }
-        else if (_isOnWall && !_isGrounded)
+        else if ((_isOnWall || CanUseWallCoyote) && !_isGrounded)
         {
             _timeJumpPressed = _time;
             ExecuteWallJump();
@@ -211,7 +233,7 @@ public class PlayerController : MonoBehaviour
     {
         _audioEventChannel.RequestPlayAudio(_jumpSFX);
 
-        _velocity.x = _wallJumpForce.x * (_isFacingRight ? -1 : 1);
+        _velocity.x = _wallJumpForce.x * -_directionFacingWall;
         _velocity.y = _wallJumpForce.y;
         _isCoyoteAvailable = false;
     }
@@ -227,7 +249,7 @@ public class PlayerController : MonoBehaviour
 
     private void DashPressed()
     {
-        if (!_isDashing && _canDash)
+        if (!_isDashing && _canDash && IsDashUnlocked)
             StartCoroutine(ExecuteDash());
     }
 
@@ -242,7 +264,7 @@ public class PlayerController : MonoBehaviour
         if (_dashAimVector.sqrMagnitude == 0)
         {
             _velocity.y = 0.01f;
-            _velocity.x = _dashForce.x * (_isFacingRight ? 0.5f : -0.5f);
+            _velocity.x = _dashForce.x * (_isFacingRight ? 1f : -1f);
         }
         else if (_dashAimVector.y == 0)
         {
@@ -323,5 +345,15 @@ public class PlayerController : MonoBehaviour
     public void ResetVelocity()
     {
         _velocity = Vector2.zero;
+    }
+
+    public void LoadData(GameData data)
+    {
+        IsDashUnlocked = data.isDashUnlocked;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.isDashUnlocked = IsDashUnlocked;
     }
 }

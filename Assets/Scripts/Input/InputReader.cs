@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Input/Input Reader")]
-public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IChapterSelectActions
+public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IPauseActions
 {
     public event Action<float> OnMoveInput;
     public event Action OnJumpPressed;
@@ -12,7 +12,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public event Action<Vector2> OnDashAimed;
     public event Action OnInteractPressed;
 
-    public event Action<int> OnChapterSelectSwitch;
+    public event Action OnPausePressed;
 
     private GameInput _gameInput;
 
@@ -22,7 +22,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
         {
             _gameInput = new GameInput();
             _gameInput.Gameplay.SetCallbacks(this);
-            _gameInput.ChapterSelect.SetCallbacks(this);
+            _gameInput.Pause.SetCallbacks(this);
         }
         _gameInput.Enable();
     }
@@ -47,14 +47,14 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
         _gameInput.Gameplay.Disable();
     }
 
-    public void EnableChapterSelectInput()
+    public void EnablePauseInput()
     {
-        _gameInput.ChapterSelect.Enable();
+        _gameInput.Pause.Enable();
     }
 
-    public void DisableChapterSelectInput()
+    public void DisablePauseInput()
     {
-        _gameInput.ChapterSelect.Disable();
+        _gameInput.Pause.Disable();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -91,12 +91,9 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
             OnInteractPressed?.Invoke();
     }
 
-    public void OnSide(InputAction.CallbackContext context)
+    public void OnPause(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
-        {
-            int contextValue = Mathf.RoundToInt(context.ReadValue<float>());
-            OnChapterSelectSwitch?.Invoke(contextValue);
-        }
+            OnPausePressed?.Invoke();
     }
 }
