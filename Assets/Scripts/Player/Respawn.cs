@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Respawn : MonoBehaviour, IDataPersistence
+public class Respawn : MonoBehaviour, IDataPersistence, IResettable
 {
     [SerializeField] PlayerController _playerController;
     [SerializeField] private Transform _defaultRespawnPoint;
@@ -20,10 +20,10 @@ public class Respawn : MonoBehaviour, IDataPersistence
         {
             cameraController.ResetCamera();
         }
-        ResetPosition();
+        ResetObject();
     }
 
-    public void ResetPosition()
+    public void ResetObject()
     {
         _playerController.ResetVelocity();
         transform.position = _respawnPoint;

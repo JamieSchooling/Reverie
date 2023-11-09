@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,14 +41,24 @@ public class PauseMenu : MonoBehaviour
         _isPaused = false;
         Time.timeScale = 1f;
         StartCoroutine(EnableInputDelayed());
+
+        // Player jumps when using a controller without this delay.
+        IEnumerator EnableInputDelayed()
+        {
+            yield return new WaitForSeconds(0.01f);
+            _inputReader.EnableGameplayInput();
+            _pauseScreen.SetActive(false);
+        }
     }
 
-    // Player jumps when using a controller without this delay.
-    private IEnumerator EnableInputDelayed()
+    public void Retry()
     {
-        yield return new WaitForSeconds(0.01f);
-        _inputReader.EnableGameplayInput();
-        _pauseScreen.SetActive(false);
+        List<IResettable> resettables = new List<IResettable>(FindObjectsOfType<MonoBehaviour>().OfType<IResettable>());
+        foreach(var resettable in resettables)
+        {
+            resettable.ResetObject();
+        }
+        Resume();
     }
 
     public void SaveAndQuitToMenu()
