@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f46590516af3f45992d5ec3af33f5f, type: 3}
+  m_Name: List Of Tmp Sprite Assets
+  m_EditorClassIdentifier: 
+  SpriteAssets:
+  - {fileID: 11400000, guid: 6324b8f4520acaf45bedf08b3e48f243, type: 2}
+  - {fileID: 11400000, guid: 3e1496c5b48d37f43ad66b54c0f659dd, type: 2}

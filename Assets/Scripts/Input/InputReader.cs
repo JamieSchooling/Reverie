@@ -72,7 +72,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        OnMoveInput?.Invoke(Mathf.Round(context.ReadValue<float>()));
+        OnMoveInput?.Invoke(Mathf.Round(context.ReadValue<Vector2>().x));
     }
 
     public void OnJump(InputAction.CallbackContext context)

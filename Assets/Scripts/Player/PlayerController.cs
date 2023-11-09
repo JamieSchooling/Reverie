@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
-public class PlayerController : MonoBehaviour, IDataPersistence
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private LayerMask _ignoreCollisionsLayers;
@@ -345,15 +345,5 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public void ResetVelocity()
     {
         _velocity = Vector2.zero;
-    }
-
-    public void LoadData(GameData data)
-    {
-        IsDashUnlocked = data.isDashUnlocked;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.isDashUnlocked = IsDashUnlocked;
     }
 }

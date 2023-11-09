@@ -4,8 +4,9 @@ public class Respawn : MonoBehaviour, IDataPersistence, IResettable
 {
     [SerializeField] PlayerController _playerController;
     [SerializeField] private Transform _defaultRespawnPoint;
+    [SerializeField] private bool _shouldSaveRespawnPoint = true;
 
-    private Vector2 _respawnPoint;
+    private Vector2 _respawnPoint = Vector2.zero;
     private int _deathCount = 0;
 
     public void SetRespawnPoint(Vector2 respawnPoint)
@@ -32,7 +33,7 @@ public class Respawn : MonoBehaviour, IDataPersistence, IResettable
     public void LoadData(GameData data)
     {
         _deathCount = data.deathCount;
-        _respawnPoint = data.playerRespawnPoint;
+        if (_shouldSaveRespawnPoint) _respawnPoint = data.playerRespawnPoint;
 
         if (_respawnPoint == Vector2.zero) _respawnPoint = _defaultRespawnPoint.position;
 
@@ -42,6 +43,6 @@ public class Respawn : MonoBehaviour, IDataPersistence, IResettable
     public void SaveData(ref GameData data)
     {
         data.deathCount = _deathCount;
-        data.playerRespawnPoint = _respawnPoint;
+        if (_shouldSaveRespawnPoint) data.playerRespawnPoint = _respawnPoint;
     }
 }
