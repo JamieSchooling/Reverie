@@ -110,4 +110,21 @@ public class PersistentDataManager : MonoBehaviour
     {
         return _fileDataHandler.LoadAllProfiles();
     }
+
+    public SettingsData GetPlayerPrefs()
+    {
+        SettingsData settingsData = new SettingsData();
+
+        settingsData.isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 1) == 1;
+        settingsData.masterVolume = PlayerPrefs.GetFloat("MasterVolume", settingsData.masterVolume);
+
+        return settingsData;
+    }
+
+    public void SavePlayerPrefs(SettingsData settingsData)
+    {
+        PlayerPrefs.SetInt("IsFullscreen", settingsData.isFullscreen ? 1 : 0);
+        PlayerPrefs.SetFloat("MasterVolume", settingsData.masterVolume);
+        PlayerPrefs.Save();
+    }
 }
