@@ -1348,7 +1348,7 @@ MonoBehaviour:
   _chapterSelectScene:
     m_SceneName: Chapter Select
   _prologueScene:
-    m_SceneName: Main Menu
+    m_SceneName: Chapter 1
   _backButton: {fileID: 438921719}
 --- !u!1 &883282144
 GameObject:

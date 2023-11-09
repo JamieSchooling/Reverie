@@ -114,8 +114,13 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            int contextValue = Mathf.RoundToInt(context.ReadValue<float>());
+            int contextValue = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
             OnChapterSelectSwitch?.Invoke(contextValue);
         }
+    }
+
+    public void OnSubmit(InputAction.CallbackContext context)
+    {
+        // Only used for chapter select event system
     }
 }

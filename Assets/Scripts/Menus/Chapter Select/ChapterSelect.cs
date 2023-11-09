@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ChapterSelect : MonoBehaviour
@@ -13,15 +14,15 @@ public class ChapterSelect : MonoBehaviour
     [SerializeField] private ChapterSelectCameraController _cameraController;
     [SerializeField] private Transform[] _cameraPositions;
     [Header("Scenes")]
-    [SerializeField] private SceneObject _prologueScene;
-    [SerializeField] private SceneObject _chapterOneScene;
+    [SerializeField] private SceneObject[] _chapterScenes;
+    [Header("Buttons")]
+    [SerializeField] private Button[] _chapterButtons;
 
     private int _currentSelectedIndex = 0;
     private bool _canSwitch = false;
 
     private void Awake()
     {
-        _inputReader.OnChapterSelectSwitch += SwitchSelected;
         _canSwitch = false;
 
         for (int i = 0; i < transform.childCount; i++)
@@ -43,6 +44,16 @@ public class ChapterSelect : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        _inputReader.OnChapterSelectSwitch -= SwitchSelected;
+    }
+
+    private void OnDisable()
+    {
+        _inputReader.OnChapterSelectSwitch -= SwitchSelected;
+    }
+
     private void SwitchSelected(int direction)
     {
         if (!_canSwitch) return;
@@ -55,5 +66,15 @@ public class ChapterSelect : MonoBehaviour
             _cameraController.SetCameraTarget(_cameraPositions[_currentSelectedIndex]);
             _switchChannel.RequestPlayAudio(_switchAudio);
         }
+    }
+
+    public void ChapterSelected()
+    {
+        foreach (var button in _chapterButtons)
+        {
+            button.interactable = false;
+        }
+
+        SceneManager.LoadSceneAsync(_chapterScenes[_currentSelectedIndex]);
     }
 }
