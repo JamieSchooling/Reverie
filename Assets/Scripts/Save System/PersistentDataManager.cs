@@ -79,6 +79,11 @@ public class PersistentDataManager : MonoBehaviour
     {
         return _gameData;
     }
+    
+    public GameData GetGameDataForProfile(string profileId)
+    {
+        return _fileDataHandler.Load(profileId);
+    }
 
     public void NewGame()
     {

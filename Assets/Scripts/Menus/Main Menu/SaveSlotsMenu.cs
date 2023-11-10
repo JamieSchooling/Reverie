@@ -27,6 +27,7 @@ public class SaveSlotsMenu : MonoBehaviour
 
     public void ActivateMenu()
     {
+        PersistentDataManager.Instance.ChangeSelectedProfileid("");
         Dictionary<string, GameData> profilesGameData = PersistentDataManager.Instance.GetAllProfilesGameData();
 
         foreach (SaveSlot saveSlot in _saveSlots)
@@ -55,8 +56,14 @@ public class SaveSlotsMenu : MonoBehaviour
     
     public void OnDeleteClicked(SaveSlot saveSlotToDelete)
     {
-        PersistentDataManager.Instance.DeleteSave(saveSlotToDelete.GetProfileId());
-        ActivateMenu();
+        GameData profileData = PersistentDataManager.Instance.GetGameDataForProfile(saveSlotToDelete.GetProfileId());
+        if (profileData is null) return;
+
+        ModalWindow.Instance.Show("Are you sure?", "You're about to delete a save, which cannot be undone. Are you sure to you want to continue?", "Yes", onSubmitAction: () =>
+        {
+            PersistentDataManager.Instance.DeleteSave(saveSlotToDelete.GetProfileId());
+            ActivateMenu();
+        });
     }
 
     private void DisableMenuButtons()
