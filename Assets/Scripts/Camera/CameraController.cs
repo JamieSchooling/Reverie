@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour, IPersistentData
 
     private Vector3 _currentTarget;
     private Vector3 _targetOnReset = Vector3.zero;
+    private Vector3 _targetOnSave = Vector3.zero;
     private float _currentSpeed;
 
     private bool _shouldMove;
@@ -34,7 +35,7 @@ public class CameraController : MonoBehaviour, IPersistentData
         }
     }
 
-    public void SetCameraTarget(Transform target, float newSpeed = 40f, bool shouldResetToHere = true, Action onTargetReached = null)
+    public void SetCameraTarget(Transform target, float newSpeed = 40f, bool shouldResetToHere = true, bool shouldSaveThisPoint = true, Action onTargetReached = null)
     {
         _currentTarget = target.position;
         _currentSpeed = newSpeed;
@@ -42,6 +43,7 @@ public class CameraController : MonoBehaviour, IPersistentData
             _targetOnReset = target.position;
 
         _shouldMove = true;
+        if (shouldSaveThisPoint) _targetOnSave = _targetOnReset;
         _timeStartedMoving = _time;
         _onTargetReached = onTargetReached;
         Time.timeScale = 0f;
@@ -60,12 +62,13 @@ public class CameraController : MonoBehaviour, IPersistentData
         if (_targetOnReset == Vector3.zero) _targetOnReset = _defaultCameraTarget.position;
 
         _currentTarget = _targetOnReset;
+        _targetOnSave = _targetOnReset;
 
         transform.position = _currentTarget;
     }
 
     public void SaveData(ref GameData data)
     {
-         if (_shouldSaveResetPoint) data.cameraTargetOnReset = _targetOnReset;
+         if (_shouldSaveResetPoint) data.cameraTargetOnReset = _targetOnSave;
     }
 }

@@ -307,7 +307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 268.5733, y: -56.618378}
+  m_AnchoredPosition: {x: 268.57, y: -47.013}
   m_SizeDelta: {x: 457.1466, y: 57.2368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3427364402010772832
@@ -693,7 +693,6 @@ GameObject:
   - component: {fileID: 139415125258041121}
   - component: {fileID: 1196071049327153220}
   - component: {fileID: 6903427700910723763}
-  - component: {fileID: 681329397504175961}
   m_Layer: 5
   m_Name: Skip Button Prompt
   m_TagString: Untagged
@@ -718,7 +717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 641.56, y: -249.51222}
+  m_AnchoredPosition: {x: 641.56, y: -235.20999}
   m_SizeDelta: {x: 1203.1232, y: 61.5922}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &139415125258041121
@@ -741,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543030f422b44674c8c586f51cc7fa35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 681329397504175961}
+  _playerInput: {fileID: 0}
   _promptText: Press BUTTONPROMPT0 to skip.
   _tmpSpriteAssets: {fileID: 11400000, guid: 28558d58a7812a043b3a69ae14e7dfc6, type: 2}
   _deviceType: 0
@@ -837,85 +836,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &681329397504175961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3699442651851966719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 3b95a865083b3c348afb1f7c47122b9c, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1196071049327153220}
-        m_TargetAssemblyTypeName: ButtonPrompt, Assembly-CSharp
-        m_MethodName: OnDeviceChange
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 681329397504175961}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.InputSystem.PlayerInput,
-            Unity.InputSystem
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6a64a1d8-cae6-47ed-a2aa-47e747f4c574
-    m_ActionName: Gameplay/Move[/Keyboard/leftArrow,/Keyboard/rightArrow,/DualShock4GamepadHID/leftStick,/XInputControllerWindows/leftStick]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 008e3ecd-4fc8-4eaf-a559-b85db66c9ed9
-    m_ActionName: Gameplay/Jump[/Keyboard/c,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7d007fd5-4ea2-431c-b71b-76287095528c
-    m_ActionName: Gameplay/Dash[/Keyboard/x,/DualShock4GamepadHID/buttonWest,/XInputControllerWindows/buttonWest,/DualShock4GamepadHID/buttonEast,/XInputControllerWindows/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: dc22add5-8fa7-4a6c-bdf8-c2399b21e005
-    m_ActionName: Gameplay/Interact[/Keyboard/z,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth,/DualShock4GamepadHID/buttonNorth,/XInputControllerWindows/buttonNorth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 280b90c5-bbf0-43f9-b0e1-2a3381059037
-    m_ActionName: Gameplay/Dash Aim[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/DualShock4GamepadHID/leftStick,/XInputControllerWindows/leftStick]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3aada9fe-f84f-4b8e-97f9-afb76c2303a1
-    m_ActionName: Pause/Pause[/Keyboard/escape,/DualShock4GamepadHID/start,/XInputControllerWindows/start]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6a6ec4c0-7998-4a93-93f8-df3e668db5a9
-    m_ActionName: ChapterSelect/Side[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/DualShock4GamepadHID/leftStick,/XInputControllerWindows/leftStick,/DualShock4GamepadHID/dpad,/XInputControllerWindows/dpad]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: dab84386-fdc9-4451-af86-f7b228f692c7
-    m_ActionName: ChapterSelect/Submit[/Keyboard/enter,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 16cca2f3-9586-4ecf-bd03-4a3d765a1735
-    m_ActionName: Dialogue/Skip[/Keyboard/space,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Dialogue
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &4996420247518743755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1418,7 @@ RectTransform:
   - {fileID: 1870750702037486316}
   - {fileID: 4933424119830366191}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1602,7 +1522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 641.56, y: -157.2994}
+  m_AnchoredPosition: {x: 641.56, y: -143}
   m_SizeDelta: {x: 1203.1232, y: 122.8278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3012571730373660894
@@ -1741,7 +1661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -233.92151, y: -144.51}
+  m_AnchoredPosition: {x: -233.92151, y: -143}
   m_SizeDelta: {x: 420.4358, y: 249.2104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7324439653988976740

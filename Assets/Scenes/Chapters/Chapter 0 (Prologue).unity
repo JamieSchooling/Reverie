@@ -486,6 +486,7 @@ MonoBehaviour:
   _speed: 40
   _shouldResetToHere: 1
   _shouldAdjustPlayerPosition: 1
+  _shouldSaveThisCameraPoint: 1
 --- !u!61 &337793524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -544,6 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 827601147}
+  _shouldSaveThisRespawnPoint: 1
 --- !u!224 &342035821 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 857460180057554264, guid: 81b45d157a2a33a44a0a49fe6b2577fd, type: 3}
@@ -632,6 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 1071339056}
+  _shouldSaveThisRespawnPoint: 1
 --- !u!114 &369566746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +651,7 @@ MonoBehaviour:
   _speed: 40
   _shouldResetToHere: 1
   _shouldAdjustPlayerPosition: 1
+  _shouldSaveThisCameraPoint: 1
 --- !u!61 &369566747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -741,6 +745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 651873365}
+  _shouldSaveThisRespawnPoint: 1
 --- !u!114 &378268751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,6 +762,7 @@ MonoBehaviour:
   _speed: 40
   _shouldResetToHere: 1
   _shouldAdjustPlayerPosition: 1
+  _shouldSaveThisCameraPoint: 1
 --- !u!61 &378268752
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1290,6 +1296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 1386455154}
+  _shouldSaveThisRespawnPoint: 1
 --- !u!114 &844411518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1306,6 +1313,7 @@ MonoBehaviour:
   _speed: 40
   _shouldResetToHere: 1
   _shouldAdjustPlayerPosition: 1
+  _shouldSaveThisCameraPoint: 1
 --- !u!61 &844411519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9496,6 +9504,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Move Button Prompt
       objectReference: {fileID: 0}
+    - target: {fileID: 1797935053441093909, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3273304351446647945, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
       propertyPath: _playerInput
       value: 
@@ -9583,6 +9595,30 @@ PrefabInstance:
     - target: {fileID: 4479718478857901932, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5526284164846998209, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1180974188}
+    - target: {fileID: 5526284164846998209, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 207425396}
+    - target: {fileID: 5526284164846998209, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 689098849}
+    - target: {fileID: 5526284164846998209, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnDeviceChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 5526284164846998209, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: OnDeviceChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 5526284164846998209, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: OnDeviceChange
       objectReference: {fileID: 0}
     - target: {fileID: 5811806542669213032, guid: 7b2b8d064ce284f4798e0aa7d7d2690f, type: 3}
       propertyPath: m_Name
