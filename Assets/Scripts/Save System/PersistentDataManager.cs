@@ -79,6 +79,11 @@ public class PersistentDataManager : MonoBehaviour
     {
         return _gameData;
     }
+    
+    public GameData GetGameDataForProfile(string profileId)
+    {
+        return _fileDataHandler.Load(profileId);
+    }
 
     public void NewGame()
     {
@@ -109,6 +114,11 @@ public class PersistentDataManager : MonoBehaviour
         }
 
         _fileDataHandler.Save(_gameData, _selectedProfileId);
+    }
+
+    public void DeleteSave(string profileIdToDelete)
+    {
+        _fileDataHandler.Delete(profileIdToDelete);
     }
 
     public Dictionary<string, GameData> GetAllProfilesGameData()

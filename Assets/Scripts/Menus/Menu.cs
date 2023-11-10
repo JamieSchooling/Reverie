@@ -1,21 +1,35 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private GameObject _firstSelected;
+    [SerializeField] private bool _reselectOnDisable;
+
+    private GameObject _lastSelected;
+    private bool _isInitialDisable = true;
 
     private void OnEnable()
     {
-        StartCoroutine(SetFirstSelected());
+        if (_reselectOnDisable) _lastSelected = EventSystem.current.currentSelectedGameObject;
+        StartCoroutine(SetSelected(_firstSelected));
     }
 
-    private IEnumerator SetFirstSelected()
+    private void OnDisable()
+    {
+        if (!_isInitialDisable && _reselectOnDisable && _lastSelected != null)
+        {
+            // So coroutine runs when window is inactive
+            Camera.main.GetComponent<MonoBehaviour>().StartCoroutine(SetSelected(_lastSelected));
+        }
+        _isInitialDisable = false;
+    }
+
+    private IEnumerator SetSelected(GameObject selected)
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(_firstSelected);
+        EventSystem.current.SetSelectedGameObject(selected);
     }
 }
