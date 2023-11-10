@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2975112fe5ec64cb7e7d4fa555a7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonPrompt: {fileID: 0}
+  _buttonPrompt: {fileID: 207425396}
   _disableOnExit: 0
 --- !u!61 &252231765
 BoxCollider2D:
@@ -8227,7 +8227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 9e882e83c43c0964d8722b42f813f722, type: 2}
-  _dashButtonPrompt: {fileID: 0}
+  _dashButtonPrompt: {fileID: 689098849}
 --- !u!50 &1364185405
 Rigidbody2D:
   serializedVersion: 4
@@ -9184,7 +9184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2975112fe5ec64cb7e7d4fa555a7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonPrompt: {fileID: 0}
+  _buttonPrompt: {fileID: 1180974188}
   _disableOnExit: 0
 --- !u!61 &2077995417
 BoxCollider2D:
