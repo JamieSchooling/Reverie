@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1066367801933362771}
   - component: {fileID: 246350387738779649}
+  - component: {fileID: 1005626917241410444}
   m_Layer: 5
   m_Name: Fullscreen Toggle
   m_TagString: Untagged
@@ -87,6 +88,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1005626917241410444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650555203759403067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af0d4a3cd6091f4683b46c15ee242f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultColour: {r: 1, g: 1, b: 1, a: 1}
+  _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
 --- !u!1 &1820651379101676358
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firstSelected: {fileID: 1650555203759403067}
+  _reselectOnDisable: 0
 --- !u!1 &3263226838300649757
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +584,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6380671931162755910}
   - {fileID: 5206399432949770817}
   m_Father: {fileID: 591381828555183836}
   m_RootOrder: -1
@@ -701,6 +716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5206399432949770817}
   - component: {fileID: 955262439008807120}
+  - component: {fileID: 6638710524024723700}
   m_Layer: 5
   m_Name: Volume Slider
   m_TagString: Untagged
@@ -720,6 +736,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6380671931162755910}
   - {fileID: 4190916455967202392}
   - {fileID: 600490410056821660}
   - {fileID: 3835899552035748470}
@@ -782,6 +799,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6638710524024723700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283849044653719707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af0d4a3cd6091f4683b46c15ee242f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultColour: {r: 1, g: 1, b: 1, a: 1}
+  _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
 --- !u!1 &5105631838665861135
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,6 +901,7 @@ GameObject:
   - component: {fileID: 6402869513428442247}
   - component: {fileID: 4869457776047137393}
   - component: {fileID: 7747695973552948406}
+  - component: {fileID: 9212711371347898090}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -919,7 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -955,7 +987,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.3647059, g: 0.3647059, b: 0.3647059, a: 0.33333334}
@@ -1004,6 +1036,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9212711371347898090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614479140338901559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af0d4a3cd6091f4683b46c15ee242f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultColour: {r: 1, g: 1, b: 1, a: 1}
+  _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
 --- !u!1 &8023396754629138596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,12 +1232,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3665813975318673442}
+  m_Father: {fileID: 5206399432949770817}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 129.23636, y: -35.47769}
+  m_AnchoredPosition: {x: 129.23636, y: 22.062012}
   m_SizeDelta: {x: 258.4728, y: 70.9554}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4667894925889617902
