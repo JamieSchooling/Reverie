@@ -56,7 +56,7 @@ public class DialogueTextBox : MonoBehaviour, DialogueNodeVisitor
 
     private void OnSkipPressed()
     {
-        if (!_isCurrentlyChoiceNode && _dialogueText.text == _currentLine) _dialogueEventChannel.RaiseRequestDialogueNode(_nextNode);
+        if (!_isCurrentlyChoiceNode && _dialogueText.text == _currentLine) _dialogueEventChannel.RequestDialogueNode(_nextNode);
         else
         {
             StopAllCoroutines();

@@ -27,6 +27,6 @@ public class DialogueChoiceButton : MonoBehaviour
 
     private void OnClick()
     {
-        _dialogueChannel.RaiseRequestDialogueNode(_choiceNextNode);
+        _dialogueChannel.RequestDialogueNode(_choiceNextNode);
     }
 }

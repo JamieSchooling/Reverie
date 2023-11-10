@@ -39,11 +39,13 @@ public class DialogueInstigator : MonoBehaviour
     {
         _dialogueChannel.RaiseStartDialogue(dialogue);
         _inputReader.EnableDialogueInput();
+        _inputReader.DisableGameplayInput();
     }
 
     private void OnDialogueEnd(Dialogue dialogue)
     {
         _inputReader.EnableGameplayInput();
+        _inputReader.DisableDialogueInput();
         _dialogueChannel.RaiseEndDialogue(dialogue);
     }
 }
