@@ -52,6 +52,12 @@ public class SaveSlotsMenu : MonoBehaviour
             SceneManager.LoadSceneAsync(_prologueScene);
         }
     }
+    
+    public void OnDeleteClicked(SaveSlot saveSlotToDelete)
+    {
+        PersistentDataManager.Instance.DeleteSave(saveSlotToDelete.GetProfileId());
+        ActivateMenu();
+    }
 
     private void DisableMenuButtons()
     {

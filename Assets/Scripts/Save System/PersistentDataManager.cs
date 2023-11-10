@@ -111,6 +111,11 @@ public class PersistentDataManager : MonoBehaviour
         _fileDataHandler.Save(_gameData, _selectedProfileId);
     }
 
+    public void DeleteSave(string profileIdToDelete)
+    {
+        _fileDataHandler.Delete(profileIdToDelete);
+    }
+
     public Dictionary<string, GameData> GetAllProfilesGameData()
     {
         return _fileDataHandler.LoadAllProfiles();

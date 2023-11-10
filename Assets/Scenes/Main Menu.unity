@@ -586,9 +586,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1756595916}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -1297,7 +1297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &865393767
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2250,6 +2250,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6488945779869035827, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 865393769}
+    - target: {fileID: 6488945779869035827, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDeleteClicked
+      objectReference: {fileID: 0}
     - target: {fileID: 7257564113386309066, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
       propertyPath: _profileId
       value: 1
@@ -2339,8 +2347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.6871, y: 211.30873}
-  m_SizeDelta: {x: 530, y: 420}
+  m_AnchoredPosition: {x: -0.6871, y: 246.18852}
+  m_SizeDelta: {x: 530, y: 489.7595}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1118218386
 GameObject:
@@ -3309,6 +3317,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6488945779869035827, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 865393769}
+    - target: {fileID: 6488945779869035827, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDeleteClicked
+      objectReference: {fileID: 0}
     - target: {fileID: 7257564113386309066, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
       propertyPath: _profileId
       value: 2
@@ -3323,6 +3339,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4970978014123612379, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
   m_PrefabInstance: {fileID: 1756595914}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1756595916 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4133336939285837548, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+  m_PrefabInstance: {fileID: 1756595914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1757513817
 GameObject:
   m_ObjectHideFlags: 0
@@ -4157,7 +4184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2081061605
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4441,6 +4468,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6488945779869035827, guid: 6fb299e934cb2304f96199e16b5aeb82, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 865393769}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
