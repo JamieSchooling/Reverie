@@ -4,9 +4,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private Transform _defaultCameraTarget;
+    [SerializeField] private bool _shouldSaveResetPoint = true;
 
     private Vector3 _currentTarget;
-    private Vector3 _targetOnReset;
+    private Vector3 _targetOnReset = Vector3.zero;
     private float _currentSpeed;
 
     private bool _shouldMove;
@@ -54,7 +55,7 @@ public class CameraController : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        _targetOnReset = data.cameraTargetOnReset;
+        if (_shouldSaveResetPoint) _targetOnReset = data.cameraTargetOnReset;
 
         if (_targetOnReset == Vector3.zero) _targetOnReset = _defaultCameraTarget.position;
 
@@ -65,6 +66,6 @@ public class CameraController : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        data.cameraTargetOnReset = _targetOnReset;
+         if (_shouldSaveResetPoint) data.cameraTargetOnReset = _targetOnReset;
     }
 }

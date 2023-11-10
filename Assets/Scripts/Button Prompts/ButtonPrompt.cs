@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class ButtonPromptText : MonoBehaviour
+public class ButtonPrompt : MonoBehaviour
 {
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerInput _playerInput;
+    [TextArea(2,3)]
     [SerializeField] private string _promptText = "Press BUTTONPROMPT0 to interact.";
 
     [SerializeField] private ListOfTmpSpriteAssets _tmpSpriteAssets;
@@ -27,6 +26,12 @@ public class ButtonPromptText : MonoBehaviour
 
     private void OnEnable()
     {
+        ChangeDeviceType();
+        SetText();
+    }
+    private void OnDisable()
+    {
+        ChangeDeviceType();
         SetText();
     }
 
@@ -57,15 +62,19 @@ public class ButtonPromptText : MonoBehaviour
         _text.text = ReplaceButtonPromptSprite.ReadAndReplaceBinding(_promptText, bindings, _tmpSpriteAssets.SpriteAssets[(int)_deviceType]);
     }
 
+    private void ChangeDeviceType()
+    {
+        _deviceType = (DeviceType)(_gameInput.controlSchemes[0].name == _playerInput.currentControlScheme ? 0 : 1);
+    }
+
     public void OnDeviceChange(PlayerInput input)
     {
-        DeviceType deviceType = (DeviceType)(_gameInput.controlSchemes[0].name == input.currentControlScheme ? 0 : 1);
-        if (deviceType != _deviceType)
-        {
-            _deviceType = deviceType;
-            SetText();
-        }
+        ChangeDeviceType();
+
+        SetText();
     }
+
+
 
     private enum DeviceType
     {

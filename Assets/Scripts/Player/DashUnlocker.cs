@@ -5,7 +5,7 @@ using UnityEngine;
 public class DashUnlocker : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
-    [SerializeField] private ButtonPromptText _dashButtonPrompt;
+    [SerializeField] private ButtonPrompt _dashButtonPrompt;
 
     private bool _isDashUnlocked = false;
 
