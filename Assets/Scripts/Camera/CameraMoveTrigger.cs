@@ -6,6 +6,7 @@ public class CameraMoveTrigger : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private bool _shouldResetToHere = true;
     [SerializeField] private bool _shouldAdjustPlayerPosition = true;
+    [SerializeField] private bool _shouldSaveThisCameraPoint = true;
 
     private CameraController _cameraController;
 
@@ -30,7 +31,7 @@ public class CameraMoveTrigger : MonoBehaviour
             }
 
             _cameraController.SetCameraTarget(
-                _cameraTarget, _speed, _shouldResetToHere, 
+                _cameraTarget, _speed, _shouldResetToHere, _shouldSaveThisCameraPoint,
                 _shouldAdjustPlayerPosition ? player.ResetObject : null);
         }
     }
