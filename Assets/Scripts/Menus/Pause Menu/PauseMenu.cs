@@ -33,6 +33,7 @@ public class PauseMenu : MonoBehaviour
         _isPaused = true;
         Time.timeScale = 0f;
         _inputReader.DisableGameplayInput();
+        _inputReader.DisableDialogueInput();
         _pauseScreen.SetActive(true);
     }
 
@@ -47,6 +48,7 @@ public class PauseMenu : MonoBehaviour
         {
             yield return new WaitForSeconds(0.01f);
             _inputReader.EnableGameplayInput();
+            _inputReader.EnableDialogueInput();
             _pauseScreen.SetActive(false);
         }
     }

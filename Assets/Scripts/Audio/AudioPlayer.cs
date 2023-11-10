@@ -14,16 +14,23 @@ public class AudioPlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        _audioEventChannel.OnAudioRequested += PlayAudio;
+        _audioEventChannel.OnAudioPlayRequested += PlayAudio;
+        _audioEventChannel.OnAudioStopRequested += StopAudio;
     }
 
     private void OnDisable()
     {
-        _audioEventChannel.OnAudioRequested -= PlayAudio;
+        _audioEventChannel.OnAudioPlayRequested -= PlayAudio;
+        _audioEventChannel.OnAudioStopRequested -= StopAudio;
     }
 
     private void PlayAudio(AudioClip clip)
     {
         _audioSource.PlayOneShot(clip);
+    }
+
+    private void StopAudio()
+    {
+        _audioSource.Stop();
     }
 }

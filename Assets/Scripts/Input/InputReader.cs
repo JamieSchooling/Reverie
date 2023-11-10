@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static GameInput;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Input/Input Reader")]
-public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IPauseActions, GameInput.IChapterSelectActions
+public class InputReader : ScriptableObject, IGameplayActions, IPauseActions, IChapterSelectActions, IDialogueActions
 {
     public event Action<float> OnMoveInput;
     public event Action OnJumpPressed;
@@ -16,6 +17,8 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 
     public event Action<int> OnChapterSelectSwitch;
 
+    public event Action OnDialogueSkipPressed;
+
     private GameInput _gameInput;
 
     private void OnEnable()
@@ -26,10 +29,12 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
             _gameInput.Gameplay.SetCallbacks(this);
             _gameInput.Pause.SetCallbacks(this);
             _gameInput.ChapterSelect.SetCallbacks(this);
+            _gameInput.Dialogue.SetCallbacks(this);
         }
         _gameInput.Enable();
     }
 
+    #region Input Enable and Disable
     public void EnableAllInput()
     {
         _gameInput.Enable();
@@ -69,6 +74,16 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     {
         _gameInput.ChapterSelect.Disable();
     }
+    public void EnableDialogueInput()
+    {
+        _gameInput.Dialogue.Enable();
+    }
+
+    public void DisableDialogueInput()
+    {
+        _gameInput.Dialogue.Disable();
+    }
+    #endregion
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -122,5 +137,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public void OnSubmit(InputAction.CallbackContext context)
     {
         // Only used for chapter select event system
+    }
+
+    public void OnSkip(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            OnDialogueSkipPressed?.Invoke();
     }
 }
