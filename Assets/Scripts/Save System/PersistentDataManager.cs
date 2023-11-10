@@ -11,7 +11,7 @@ public class PersistentDataManager : MonoBehaviour
 
     private GameData _gameData;
 
-    private List<IDataPersistence> _dataPersistenceObjects;
+    private List<IPersistentData> _dataPersistenceObjects;
     private FileDataHandler _fileDataHandler;
 
     private string _selectedProfileId = "";
@@ -62,11 +62,11 @@ public class PersistentDataManager : MonoBehaviour
         SaveGame();
     }
 
-    private List<IDataPersistence> FindAllDataPersistenceObjects()
+    private List<IPersistentData> FindAllDataPersistenceObjects()
     {
-        IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
+        IEnumerable<IPersistentData> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IPersistentData>();
 
-        return new List<IDataPersistence>(dataPersistenceObjects);
+        return new List<IPersistentData>(dataPersistenceObjects);
     }
 
     public void ChangeSelectedProfileid(string newProfileId)
@@ -95,7 +95,7 @@ public class PersistentDataManager : MonoBehaviour
             NewGame();
         }
 
-        foreach (IDataPersistence dataPersistenceObject in _dataPersistenceObjects)
+        foreach (IPersistentData dataPersistenceObject in _dataPersistenceObjects)
         {
             dataPersistenceObject.LoadData(_gameData);
         }
@@ -103,7 +103,7 @@ public class PersistentDataManager : MonoBehaviour
 
     public void SaveGame()
     {
-        foreach (IDataPersistence dataPersistenceObject in _dataPersistenceObjects)
+        foreach (IPersistentData dataPersistenceObject in _dataPersistenceObjects)
         {
             dataPersistenceObject.SaveData(ref _gameData);
         }

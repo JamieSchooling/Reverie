@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour, IDataPersistence
+public class CameraController : MonoBehaviour, IPersistentData
 {
     [SerializeField] private Transform _defaultCameraTarget;
     [SerializeField] private bool _shouldSaveResetPoint = true;

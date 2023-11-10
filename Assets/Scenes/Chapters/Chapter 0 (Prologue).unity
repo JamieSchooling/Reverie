@@ -7814,7 +7814,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.56339645, y: 1.6720152}
+  m_Offset: {x: 0.6520996, y: 2.1450987}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7825,7 +7825,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.126793, y: 4.9982967}
+  m_Size: {x: 2.3041992, y: 4.0521297}
   m_EdgeRadius: 0
 --- !u!1 &1386455153
 GameObject:
@@ -8452,6 +8452,7 @@ GameObject:
   - component: {fileID: 1547856857}
   - component: {fileID: 1547856855}
   - component: {fileID: 1547856854}
+  - component: {fileID: 1547856858}
   m_Layer: 6
   m_Name: Prologue Completer
   m_TagString: Untagged
@@ -8518,7 +8519,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.56339645, y: 1.6720152}
+  m_Offset: {x: -0.057525635, y: 1.6720152}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8529,7 +8530,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.126793, y: 4.9982967}
+  m_Size: {x: 3.368637, y: 4.9982967}
   m_EdgeRadius: 0
 --- !u!4 &1547856857
 Transform:
@@ -8546,6 +8547,21 @@ Transform:
   m_Father: {fileID: 427855835}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1547856858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547856853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e212362483e7349bd28d972edb528f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chapterSelectScene:
+    m_SceneName: Chapter Select
+  _inputReader: {fileID: 11400000, guid: 9e882e83c43c0964d8722b42f813f722, type: 2}
 --- !u!1 &1573060891
 GameObject:
   m_ObjectHideFlags: 0
@@ -10026,17 +10042,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3036770397408430562, guid: 81b45d157a2a33a44a0a49fe6b2577fd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6673760111138997988, guid: 81b45d157a2a33a44a0a49fe6b2577fd, type: 3}
       propertyPath: m_Name
       value: Pause Screen
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673760111138997988, guid: 81b45d157a2a33a44a0a49fe6b2577fd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

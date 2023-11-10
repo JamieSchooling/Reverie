@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Respawn : MonoBehaviour, IDataPersistence, IResettable
+public class Respawn : MonoBehaviour, IPersistentData, IResettable
 {
     [SerializeField] PlayerController _playerController;
     [SerializeField] private Transform _defaultRespawnPoint;
