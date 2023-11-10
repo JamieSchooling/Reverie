@@ -1,12 +1,20 @@
 using UnityEngine;
 
-public class Collectible : MonoBehaviour
+public class Collectible : MonoBehaviour, IPersistentData
 {
+    [SerializeField] private string _id;
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private DialogueEventChannel _dialogueEventChannel;
     [SerializeField] private Dialogue _dialogue;
 
     private bool _isPlayerInRange = false;
+    private bool _isCollected = false;
+
+    [ContextMenu("Generate GUID for id")]
+    private void GenerateGuid()
+    {
+        _id = System.Guid.NewGuid().ToString();
+    }
 
     private void Awake()
     {
@@ -54,6 +62,25 @@ public class Collectible : MonoBehaviour
 
     private void OnDialogueEnd(Dialogue dialogue)
     {
+        _isCollected = true;
         gameObject.SetActive(false);
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.collectibles.TryGetValue(_id, out _isCollected);
+        if (_isCollected)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.collectibles.ContainsKey(_id))
+        {
+            data.collectibles.Remove(_id);
+        }
+        data.collectibles.Add(_id, _isCollected);
     }
 }

@@ -13,6 +13,7 @@ public class SaveSlot : MonoBehaviour
     [SerializeField] private GameObject _hasDataContent;
     [SerializeField] private TextMeshProUGUI _chapterTitleText;
     [SerializeField] private TextMeshProUGUI _deathCountText;
+    [SerializeField] private TextMeshProUGUI _collectibleCountText;
 
     private Button _saveSlotButton;
 
@@ -35,6 +36,7 @@ public class SaveSlot : MonoBehaviour
 
             _chapterTitleText.text = data.isPrologueComplete ? "Chapter 1" : "Prologue";
             _deathCountText.text = $"Death Count: {data.deathCount}";
+            _collectibleCountText.text = data.collectibles.Count.ToString();
         }
     }
 
