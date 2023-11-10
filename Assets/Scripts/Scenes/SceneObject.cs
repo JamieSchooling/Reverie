@@ -43,7 +43,6 @@ public class SceneObjectEditor : PropertyDrawer
             }
         }
 
-        Debug.Log("Scene [" + sceneObjectName + "] cannot be used. Add this scene to the 'Scenes in the Build' in the build settings.");
         return null;
     }
 
@@ -64,6 +63,7 @@ public class SceneObjectEditor : PropertyDrawer
                 if (scnObj == null)
                 {
                     Debug.LogWarning("The scene " + newScene.name + " cannot be used. To use this scene add it to the build settings for the project.");
+                    EditorUtility.DisplayDialog("Warning", "Scene [" + newScene.name + "] cannot be used. Add this scene to the 'Scenes in the Build' in the build settings.", "Ok");
                 }
                 else
                 {

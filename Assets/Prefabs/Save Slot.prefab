@@ -324,6 +324,7 @@ MonoBehaviour:
   _profileId: 0
   _noDataContent: {fileID: 4225021337829175176}
   _hasDataContent: {fileID: 842461914968437325}
+  _chapterTitleText: {fileID: 7898608984063085996}
   _deathCountText: {fileID: 1835074742582738782}
 --- !u!1 &1360781636623765276
 GameObject:

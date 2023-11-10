@@ -46,7 +46,7 @@ public class ChapterSelect : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReader.OnChapterSelectSwitch -= SwitchSelected;
+        _inputReader.OnChapterSelectSwitch += SwitchSelected;
     }
 
     private void OnDisable()

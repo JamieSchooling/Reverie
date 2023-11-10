@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
-public class PlayerController : MonoBehaviour, IDataPersistence
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private LayerMask _ignoreCollisionsLayers;
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     [SerializeField] private float _dashDuration = 0.05f;
     [SerializeField] private float _dashCooldown = 0.1f;
     [SerializeField] private DashGhost[] _dashGhosts;
+    [SerializeField] private bool _isDashUnlocked = false;
 
     [Header("Sprites")]
     [SerializeField] private Sprite _normalSprite;
@@ -76,7 +77,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         && _time - _timeJumpReleased > _jumpBuffer
         && _time > _timeJumpPressed + 0.1f;
 
-    public bool IsDashUnlocked { get; set; } = false;
+    public bool IsDashUnlocked { get => _isDashUnlocked; set => _isDashUnlocked = value; }
     public bool IsSlowFalling { get; set; } = false;
 
     private void Awake()
@@ -345,15 +346,5 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public void ResetVelocity()
     {
         _velocity = Vector2.zero;
-    }
-
-    public void LoadData(GameData data)
-    {
-        IsDashUnlocked = data.isDashUnlocked;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.isDashUnlocked = IsDashUnlocked;
     }
 }
