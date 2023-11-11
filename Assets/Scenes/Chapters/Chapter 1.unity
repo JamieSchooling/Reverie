@@ -22169,14 +22169,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3036770397408430562, guid: 81b45d157a2a33a44a0a49fe6b2577fd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3036770397408430562, guid: 81b45d157a2a33a44a0a49fe6b2577fd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 176
-      objectReference: {fileID: 0}
     - target: {fileID: 6673760111138997988, guid: 81b45d157a2a33a44a0a49fe6b2577fd, type: 3}
       propertyPath: m_Name
       value: Pause Screen

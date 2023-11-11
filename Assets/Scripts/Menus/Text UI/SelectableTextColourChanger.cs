@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Selectable))]
-public class SelectableTextColourChanger : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class SelectableTextColourChanger : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler
 {
     [SerializeField] private Color _defaultColour = Color.white;
     [SerializeField] private Color _selectedColour = Color.gray;
@@ -35,6 +35,15 @@ public class SelectableTextColourChanger : MonoBehaviour, ISelectHandler, IDesel
         foreach (var textObject in textObjects)
         {
             textObject.color = _defaultColour;
+        }
+    }
+
+    public void OnSubmit(BaseEventData eventData)
+    {
+        textObjects = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+        foreach (var textObject in textObjects)
+        {
+            textObject.color = _selectedColour;
         }
     }
 }
