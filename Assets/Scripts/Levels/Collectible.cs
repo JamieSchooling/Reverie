@@ -62,6 +62,8 @@ public class Collectible : MonoBehaviour, IPersistentData
 
     private void OnDialogueEnd(Dialogue dialogue)
     {
+        if (dialogue != _dialogue) return;
+
         _isCollected = true;
         gameObject.SetActive(false);
     }
