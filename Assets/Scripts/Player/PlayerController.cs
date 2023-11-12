@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [Header("Sprites")]
     [SerializeField] private Sprite _normalSprite;
     [SerializeField] private Sprite _dashSprite;
+    [SerializeField] private Sprite _slowFallSprite;
 
     [Header("Audio")]
     [SerializeField] private AudioEventChannel _audioEventChannel;
@@ -144,6 +145,7 @@ public class PlayerController : MonoBehaviour
 
                 _isGrounded = true;
                 _isCoyoteAvailable = true;
+                _spriteRenderer.sprite = _normalSprite;
                 IsSlowFalling = false;
 
                 StartCoroutine(EndDash());
@@ -195,6 +197,7 @@ public class PlayerController : MonoBehaviour
     {
         if (IsSlowFalling)
         {
+            _spriteRenderer.sprite = _slowFallSprite;
             _velocity.y = Mathf.MoveTowards(_velocity.y, -_slowFallSpeed, _currentGravity * Time.fixedDeltaTime);
         }
         else if (_isOnWall && !_isGrounded)
@@ -302,7 +305,6 @@ public class PlayerController : MonoBehaviour
     {
         _isDashing = false;
         _velocity.x = 0;
-        _spriteRenderer.sprite = _normalSprite;
         yield return new WaitForSeconds(_dashCooldown);
         _canDash = true;
     }
