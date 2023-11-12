@@ -12,6 +12,7 @@ public class BossRoomLock : MonoBehaviour
     [SerializeField] private float _unlockDuration = 2f;
     [Header("Display")]
     [SerializeField] private TextMeshProUGUI _displayText;
+    [SerializeField] private GameObject _displayUI;
 
     private int _levelCollectibleCount = 0;
 
@@ -36,8 +37,14 @@ public class BossRoomLock : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void OnEnable()
+    private void Start()
     {
+        if (LevelCollectibleCount >= _requiredCollectibleAmount)
+        {
+            _displayUI.SetActive(false);
+            gameObject.SetActive(false);
+        }
+
         _displayText.text = $"{_levelCollectibleCount} / {_requiredCollectibleAmount}";
     }
 
@@ -54,6 +61,7 @@ public class BossRoomLock : MonoBehaviour
     {
         yield return new WaitForSeconds(_unlockDuration);
 
+        _displayUI.SetActive(false);
         gameObject.SetActive(false);
     }
 }
