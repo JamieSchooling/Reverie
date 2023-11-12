@@ -2148,7 +2148,7 @@ PrefabInstance:
     - target: {fileID: 1171900395325056035, guid: c5965df904382614ba266064df8e02fe, type: 3}
       propertyPath: _dialogue
       value: 
-      objectReference: {fileID: 11400000, guid: be06acd9801ef09498bfc552b7d41e10, type: 2}
+      objectReference: {fileID: 11400000, guid: f1d03a9d42b27fe4aad5a76b8f384c18, type: 2}
     - target: {fileID: 1945840375770431371, guid: c5965df904382614ba266064df8e02fe, type: 3}
       propertyPath: m_Name
       value: Level 3 Collectible
@@ -41781,6 +41781,10 @@ PrefabInstance:
       propertyPath: _id
       value: f9efb728-6f5c-4664-9310-f6483d0c60c6
       objectReference: {fileID: 0}
+    - target: {fileID: 1171900395325056035, guid: c5965df904382614ba266064df8e02fe, type: 3}
+      propertyPath: _dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b07f9ae802f4ac4688cb64d846d00a5, type: 2}
     - target: {fileID: 1945840375770431371, guid: c5965df904382614ba266064df8e02fe, type: 3}
       propertyPath: m_Name
       value: Level 1 Collectible
@@ -43703,7 +43707,7 @@ PrefabInstance:
     - target: {fileID: 1171900395325056035, guid: c5965df904382614ba266064df8e02fe, type: 3}
       propertyPath: _dialogue
       value: 
-      objectReference: {fileID: 11400000, guid: be06acd9801ef09498bfc552b7d41e10, type: 2}
+      objectReference: {fileID: 11400000, guid: 17f7b12af00a7f149b47d9ae4f61489c, type: 2}
     - target: {fileID: 1945840375770431371, guid: c5965df904382614ba266064df8e02fe, type: 3}
       propertyPath: m_Name
       value: Level 2 Collectible
