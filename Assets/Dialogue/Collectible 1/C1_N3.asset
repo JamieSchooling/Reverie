@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330cba8e0fe179f4c879e4350ccaa4ab, type: 3}
+  m_Name: C1_N3
+  m_EditorClassIdentifier: 
+  _dialogueLine:
+    _speaker: {fileID: 11400000, guid: 87f5973865dde624d908d26f3b0363ae, type: 2}
+    _text: Yeah, we were close a long time ago. Things got a bit messy, but like
+      I said, it was a long time ago.
+    _audio: {fileID: 0}
+  _choices:
+  - _choicePreview: Messy?
+    _choiceNode: {fileID: 11400000, guid: af5ca955fbec8da4e9e5894ca58a6504, type: 2}
+  - _choicePreview: I don't remember
+    _choiceNode: {fileID: 11400000, guid: 6881e357a5bc4a6439cba802e75ca6e3, type: 2}

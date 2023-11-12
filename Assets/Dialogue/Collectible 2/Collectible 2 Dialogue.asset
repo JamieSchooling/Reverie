@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ab3e340066db5498d705fc3e67a58a, type: 3}
+  m_Name: Collectible 2 Dialogue
+  m_EditorClassIdentifier: 
+  _firstNode: {fileID: 11400000, guid: 68cd97c29aba80d4fba7ec235c18efd2, type: 2}
