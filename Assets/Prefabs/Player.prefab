@@ -239,6 +239,7 @@ MonoBehaviour:
   _isDashUnlocked: 0
   _normalSprite: {fileID: 21300000, guid: 060152af75433a446a6a147bf758e803, type: 3}
   _dashSprite: {fileID: 21300000, guid: b9163d7f7af398d4aa65b35b7faa943d, type: 3}
+  _slowFallSprite: {fileID: 21300000, guid: eaeb8ba74b915ad409205d724caef3b7, type: 3}
   _audioEventChannel: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
   _jumpSFX: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
   _landSFX: {fileID: 8300000, guid: d4a8605b2233dc84b87ad23c9cc6d2e6, type: 3}
