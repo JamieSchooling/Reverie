@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class BossRoomLock : MonoBehaviour
 {
@@ -12,25 +13,32 @@ public class BossRoomLock : MonoBehaviour
     [Header("Display")]
     [SerializeField] private TextMeshProUGUI _displayText;
 
-    public static BossRoomLock Instance { get; private set; }
+    private int _levelCollectibleCount = 0;
 
     public int LevelCollectibleCount
     { 
         get
         {
-            return LevelCollectibleCount;
+            return _levelCollectibleCount;
         }
         set
         {
-            LevelCollectibleCount = value;
+            _levelCollectibleCount = value;
             _displayText.text = $"{value} / {_requiredCollectibleAmount}";
         }
     }
 
+    public static BossRoomLock Instance { get; private set; }
+    
     private void Awake()
     {
         Instance = this;
         gameObject.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        _displayText.text = $"{_levelCollectibleCount} / {_requiredCollectibleAmount}";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

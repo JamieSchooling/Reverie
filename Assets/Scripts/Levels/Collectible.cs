@@ -65,6 +65,7 @@ public class Collectible : MonoBehaviour, IPersistentData
         if (dialogue != _dialogue) return;
 
         _isCollected = true;
+        BossRoomLock.Instance.LevelCollectibleCount++;
         gameObject.SetActive(false);
     }
 
@@ -73,6 +74,7 @@ public class Collectible : MonoBehaviour, IPersistentData
         data.collectibles.TryGetValue(_id, out _isCollected);
         if (_isCollected)
         {
+            BossRoomLock.Instance.LevelCollectibleCount++;
             gameObject.SetActive(false);
         }
     }
