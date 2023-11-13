@@ -36,7 +36,12 @@ public class SaveSlot : MonoBehaviour
 
             _chapterTitleText.text = data.isPrologueComplete ? "Chapter 1" : "Prologue";
             _deathCountText.text = $"Death Count: {data.deathCount}";
-            _collectibleCountText.text = data.collectibles.Count.ToString();
+            int collectibleCount = 0;
+            foreach (var item in data.collectibles)
+            {
+                if (item.Value == true) collectibleCount++;
+            }
+            _collectibleCountText.text = collectibleCount.ToString();
         }
     }
 

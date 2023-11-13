@@ -227,6 +227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultColour: {r: 1, g: 1, b: 1, a: 1}
   _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
+  _audioEventChannel: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
+  _selectSFX: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
 --- !u!1 &2043854348769597035
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +378,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultColour: {r: 1, g: 1, b: 1, a: 1}
   _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
+  _audioEventChannel: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
+  _selectSFX: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
 --- !u!1 &3276170785762508950
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,6 +780,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultColour: {r: 1, g: 1, b: 1, a: 1}
   _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
+  _audioEventChannel: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
+  _selectSFX: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
 --- !u!1 &4856471732590774103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultColour: {r: 1, g: 1, b: 1, a: 1}
   _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
+  _audioEventChannel: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
+  _selectSFX: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
 --- !u!1 &8095580533173354422
 GameObject:
   m_ObjectHideFlags: 0

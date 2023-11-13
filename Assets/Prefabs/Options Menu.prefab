@@ -252,7 +252,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultColour: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
+  _selectedColour: {r: 0.42352942, g: 0.25490198, b: 1, a: 1}
+  _audioEventChannel: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
+  _selectSFX: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
 --- !u!1 &2359138027357462615
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6380477444237321029
 RectTransform:
   m_ObjectHideFlags: 0
@@ -924,7 +926,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultColour: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
+  _selectedColour: {r: 0.42352942, g: 0.25490198, b: 1, a: 1}
+  _audioEventChannel: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
+  _selectSFX: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
 --- !u!1 &5526473690794922651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,7 +1263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultColour: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColour: {r: 0.59607846, g: 0.47843137, b: 1, a: 1}
+  _selectedColour: {r: 0.42352942, g: 0.25490198, b: 1, a: 1}
+  _audioEventChannel: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
+  _selectSFX: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
 --- !u!1 &8661763865888725859
 GameObject:
   m_ObjectHideFlags: 0

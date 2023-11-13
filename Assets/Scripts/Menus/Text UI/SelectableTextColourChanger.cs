@@ -8,6 +8,8 @@ public class SelectableTextColourChanger : MonoBehaviour, ISelectHandler, IDesel
 {
     [SerializeField] private Color _defaultColour = Color.white;
     [SerializeField] private Color _selectedColour = Color.gray;
+    [SerializeField] private AudioEventChannel _audioEventChannel;
+    [SerializeField] private AudioClip _selectSFX;
 
     TextMeshProUGUI[] textObjects;
 
@@ -27,6 +29,7 @@ public class SelectableTextColourChanger : MonoBehaviour, ISelectHandler, IDesel
         {
             textObject.color = _selectedColour;
         }
+        _audioEventChannel.RequestPlayAudio(_selectSFX);
     }
 
     public void OnDeselect(BaseEventData eventData)
