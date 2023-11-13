@@ -2580,9 +2580,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 169035688}
     m_Modifications:
+    - target: {fileID: 1005626917241410444, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _selectSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
+    - target: {fileID: 1005626917241410444, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _selectedColour.g
+      value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005626917241410444, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _selectedColour.r
+      value: 0.42352942
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005626917241410444, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _audioEventChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
     - target: {fileID: 2843994956868067932, guid: c120aa14a30356042a62bb7a66380274, type: 3}
       propertyPath: m_Name
       value: Options Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843994956868067932, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6380477444237321029, guid: c120aa14a30356042a62bb7a66380274, type: 3}
       propertyPath: m_Pivot.x
@@ -2668,10 +2688,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6638710524024723700, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _selectSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
+    - target: {fileID: 6638710524024723700, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _selectedColour.g
+      value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638710524024723700, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _selectedColour.r
+      value: 0.42352942
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638710524024723700, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _audioEventChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
     - target: {fileID: 7747695973552948406, guid: c120aa14a30356042a62bb7a66380274, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2081061604}
+    - target: {fileID: 9212711371347898090, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _selectSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d6ce8b737053c943a94cdf4da8c07fe, type: 3}
+    - target: {fileID: 9212711371347898090, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _selectedColour.g
+      value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212711371347898090, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _selectedColour.r
+      value: 0.42352942
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212711371347898090, guid: c120aa14a30356042a62bb7a66380274, type: 3}
+      propertyPath: _audioEventChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 5139dea00b009d9408883c4275680ba2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
